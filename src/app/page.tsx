@@ -1,8 +1,7 @@
-import Image from "next/image";
-import Button from '@mui/material/Button';
+import Landing from "@/components/layouts/Landing/Landing";
 
 export default function Home() {
   return (
-    <Button variant="contained">Hello world</Button>
+    <Landing/>
   );
 }
