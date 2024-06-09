@@ -43,11 +43,11 @@ const ItemCard = ({ data }: any) => {
         </button>
       </div>
 
-      <h5 className="text-[15px] font-medium line-clamp-1">{data?.title}</h5>
-      <p className="text-gray-500 font-light text-sm">
+      <h5 className="text-[15px] font-medium line-clamp-1 mt-1 px-1">{data?.title}</h5>
+      <p className="text-gray-500 font-light text-sm px-1">
         Hosted by {data?.storeName}
       </p>
-      <h5 className="text-[15px] font-medium line-clamp-1">
+      <h5 className="text-[15px] font-medium line-clamp-1 px-1">
         ${data?.price} <span className="font-light">per guest</span>
       </h5>
     </div>
