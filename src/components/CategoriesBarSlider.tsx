@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 import Container from "./ui/container";
+import {cateorySettings} from '@/utils'
 
 const CategoriesBarSlider = () => {
   const slider = React.useRef<any>(null);
@@ -11,7 +12,7 @@ const CategoriesBarSlider = () => {
     <section className="border-t-[1px] py-4 ">
       <Container >
         <div className="relative">
-          <Slider {...settings} ref={slider} className="pl-5 pr-8">
+          <Slider {...cateorySettings} ref={slider} className="pl-5 pr-8">
             {categoriesList?.map((item: any, idx: number) => (
               <div
                 key={idx}
@@ -44,7 +45,6 @@ const CategoriesBarSlider = () => {
             </div>
           </button>
         </div>
-        
       </Container>
     </section>
   );
@@ -52,41 +52,7 @@ const CategoriesBarSlider = () => {
 
 export default CategoriesBarSlider;
 
-var settings = {
-  dots: false,
-  infinite: true,
-  arrows: false,
-  speed: 500,
-  slidesToShow: 17,
-  slidesToScroll: 1,
-  initialSlide: 0,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
+
 
 const categoriesList = [
   {
