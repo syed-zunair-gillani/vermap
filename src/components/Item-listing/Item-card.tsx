@@ -11,13 +11,13 @@ const ItemCard = ({ data }: any) => {
       <div className="relative group cursor-pointer ">
         <Slider {...settings} ref={slider}>
           {data?.images?.map((item: any, idx: number) => (
-            <figure key={idx}>
+            <figure key={idx} className="rounded-[14px] !overflow-hidden">
               <Image
                 src={item}
                 alt={data?.title}
                 width={285}
                 height={285}
-                className="h-[160px] sm:h-[285px] lg:h-[285px] object-cover w-full rounded-[14px] overflow-hidden"
+                className="h-[160px] sm:h-[285px] lg:h-[285px] object-cover w-full"
               />
             </figure>
           ))}
