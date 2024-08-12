@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
-import Container from "./ui/container";
-import Logo from "./Logo";
-import NavLinks from "./NavLinks";
 import Image from "next/image";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import { IconButton } from "@mui/material";
+import Container from "../ui/container";
+import Logo from "./Logo";
+import NavLinks from "./NavLinks";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -21,8 +21,8 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <Container className="py-5 grid grid-cols-3">
+    <header className="border-b-[1px]">
+      <Container className="py-2 grid grid-cols-3 items-center">
         <Logo />
         <NavLinks />
         <div className="flex items-center justify-end">

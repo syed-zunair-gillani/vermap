@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
 
@@ -12,13 +13,15 @@ const ItemCard = ({ data }: any) => {
         <Slider {...settings} ref={slider}>
           {data?.images?.map((item: any, idx: number) => (
             <figure key={idx} className="rounded-[14px] !overflow-hidden">
+              <Link href="/rooms/slug">
               <Image
                 src={item}
                 alt={data?.title}
                 width={285}
                 height={285}
-                className="h-[160px] sm:h-[285px] lg:h-[285px] object-cover w-full"
+                className="h-[160px] sm:h-[285px] lg:h-[310px] object-cover w-full"
               />
+              </Link>
             </figure>
           ))}
         </Slider>
@@ -43,7 +46,9 @@ const ItemCard = ({ data }: any) => {
         </button>
       </div>
 
-      <h5 className="text-[15px] font-medium line-clamp-1 mt-1 px-1">{data?.title}</h5>
+      <h5 className="text-[15px] font-medium line-clamp-1 mt-1 px-1">
+        <Link href="/rooms/slug">{data?.title}</Link>
+      </h5>
       <p className="text-gray-500 font-light text-sm px-1">
         Hosted by {data?.storeName}
       </p>

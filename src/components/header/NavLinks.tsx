@@ -6,7 +6,7 @@ import React from "react";
 const NavLinks = () => {
   const pathname = usePathname();
   return (
-    <ul className="text-gray-500 font-light flex items-center justify-center">
+    <ul className="text-gray-500 font-normal flex items-center justify-center">
       <li className={`hover:text-black hover:bg-gray-100 px-5 rounded-full py-2 ${pathname === '/' && 'font-normal text-black'}`}>
         <Link href="/">Home</Link>
       </li>

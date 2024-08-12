@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Container from "../../ui/container";
-import ItemListing from "../../Item-listing/ItemListing";
+import Container from "../ui/container";
+import ItemListing from "../Item-listing/ItemListing";
 import CategoriesBarSlider from "@/components/CategoriesBarSlider";
 import { featureSettings } from "@/utils";
 import Slider from "react-slick";
@@ -9,7 +9,6 @@ import Slider from "react-slick";
 const Landing = () => {
   const slider = React.useRef<any>(null);
   const [activeInspiration, setActiveInspiration] = useState<any>(features[0])
-  console.log("🚀 ~ Landing ~ activeInspiration:", activeInspiration)
 
   return (
     <>
