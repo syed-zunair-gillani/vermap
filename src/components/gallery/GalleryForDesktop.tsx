@@ -5,7 +5,7 @@ import React from "react";
 const GalleryForDesktop = () => {
   return (
     <>
-      <section className="grid grid-cols-2 gap-2 rounded-xl overflow-hidden relative">
+      <section className="grid-cols-2 gap-2 rounded-xl hidden md:grid overflow-hidden relative">
         <div>
           <figure className="relative group cursor-pointer">
             <Image
