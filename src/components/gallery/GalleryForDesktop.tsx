@@ -11,9 +11,9 @@ const GalleryForDesktop = () => {
             <Image
               src="/images/1.png"
               width={800}
-              height={400}
+              height={460}
               alt="image"
-              className="w-full h-[380px] object-cover"
+              className="w-full h-[460px] object-cover"
             />
             <div className="absolute inset-0 group-hover:bg-black/10" />
           </figure>
@@ -25,7 +25,7 @@ const GalleryForDesktop = () => {
               width={800}
               height={400}
               alt="image"
-              className="w-full h-[186px] object-cover"
+              className="w-full h-[226px] object-cover"
             />
             <div className="absolute inset-0 group-hover:bg-black/10" />
           </figure>
@@ -35,7 +35,7 @@ const GalleryForDesktop = () => {
               width={800}
               height={400}
               alt="image"
-              className="w-full h-[186px] object-cover"
+              className="w-full h-[226px] object-cover"
             />
             <div className="absolute inset-0 group-hover:bg-black/10" />
           </figure>
@@ -45,7 +45,7 @@ const GalleryForDesktop = () => {
               width={800}
               height={400}
               alt="image"
-              className="w-full h-[186px] object-cover"
+              className="w-full h-[226px] object-cover"
             />
             <div className="absolute inset-0 group-hover:bg-black/10" />
           </figure>
@@ -55,7 +55,7 @@ const GalleryForDesktop = () => {
               width={800}
               height={400}
               alt="image"
-              className="w-full h-[186px] object-cover"
+              className="w-full h-[226px] object-cover"
             />
             <div className="absolute inset-0 group-hover:bg-black/10" />
           </figure>
