@@ -7,6 +7,7 @@ import GalleryForMobile from "../gallery/GalleryForMobile";
 import Image from "next/image";
 import Features from "../modules/room-slug/features";
 import MeetYourHost from "../meet-your-host/meet-your-host";
+import SingleListMap from "../map/singleListMap";
 
 const RoomSlug = () => {
   return (
@@ -126,8 +127,78 @@ const RoomSlug = () => {
             Westford, Massachusetts, United States{" "}
           </p>
         </div>
-
+        {/* <SingleListMap/> */}
       </Container>
+
+      <Container>
+        <hr />
+        <div className="py-10">
+          <h3 className="sm:font-medium sm:text-lg md:text-2xl">
+            Neighborhood highlights
+          </h3>
+          <p className="mt-4 text-gray-600">
+            My Slumber Party Fun compact is in my adorable hometown of
+            Littleton, Massachusetts. It might not be the most urban of
+            settings, but that’s exactly why I love it. Plenty of room for
+            imagination, exploration, and adventure. You MUST come see it.
+          </p>
+        </div>
+      </Container>
+
+      <Container className="">
+        <hr />
+        <figure className="flex justify-center mt-8">
+          <Image src="/images/icons.png" width={600} height={300} alt="icons" />
+        </figure>
+        <div className=" max-w-[460px] mx-auto mb-16">
+          <h3 className="text-center font-extrabold text-2xl md:text-8xl">
+            icons
+          </h3>
+          <p className="mt-4 text-gray-600 text-center">
+            Extraordinary experiences hosted by the world’s greatest names in
+            music, film, TV, art, sports, and more.
+          </p>
+        </div>
+      </Container>
+
+      <Container className="">
+        <hr />
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 my-10">
+          <div className="">
+            <h3 className="font-medium">Request to book</h3>
+            <p className="text-gray-500 font-normal mt-1.5">
+              Choose your dates, add your guests, then answer a question about
+              why you want to go.
+            </p>
+          </div>
+          <div className="">
+            <h3 className="font-medium">Selection process</h3>
+            <p className="text-gray-500 font-normal mt-1.5">
+              First, we’ll randomly choose a set of potential guests. Next,
+              we’ll review their answers for unique perspectives and connections
+              to the icon. Then, we’ll invite selected guests to book.
+            </p>
+          </div>
+          <div className="">
+            <h3 className="font-medium">Requirements</h3>
+            <p className="text-gray-500 font-normal mt-1.5">
+              You’ll need an active Airbnb account and the app to participate,
+              and be a resident of an eligible country or region. It won’t cost
+              you anything to submit a request.
+            </p>
+          </div>
+        </section>
+      </Container>
+
+      <Container className="">
+        <hr />
+        <div className=" max-w-[560px] my-10">
+          <p className="mt-4 text-gray-600 text-sm font-light">
+          If you’re selected and decide to book, you’ll have 24 hours to complete the purchase. Travel costs are not included. See the full rules, including age and geographic eligibility, how data will be used, odds of being selected, and other terms.
+          </p>
+        </div>
+      </Container>
+
     </section>
   );
 };
