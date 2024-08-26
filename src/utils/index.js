@@ -3,7 +3,7 @@ export var cateorySettings = {
     infinite: true,
     arrows: false,
     speed: 500,
-    slidesToShow: 17,
+    slidesToShow: 16,
     slidesToScroll: 1,
     initialSlide: 0,
     responsive: [

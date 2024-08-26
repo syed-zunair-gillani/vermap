@@ -9,6 +9,7 @@ import { IconButton } from "@mui/material";
 import Container from "../ui/container";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
+import MainFilter from "./MainFilter";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -21,11 +22,14 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b-[1px]">
-      <Container className="py-2 grid grid-cols-3 items-center">
+    <header className="border-b-[1px] sticky w-full top-0 z-50 bg-white">
+      <Container className="py-5 flex justify-between items-start">
         <Logo />
-        <NavLinks />
-        <div className="flex items-center justify-end">
+        <div className="flex-1 pt-1">
+          <NavLinks />
+          <MainFilter/>
+        </div>
+        <div className="flex items-center justify-end max-w-[270px] w-full">
           <button className="hover:text-black hover:bg-gray-100 px-5 rounded-full py-2 text-[15px]">
             Airbnb your home
           </button>
