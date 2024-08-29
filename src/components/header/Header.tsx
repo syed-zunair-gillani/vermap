@@ -22,12 +22,11 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b-[1px] sticky w-full top-0 z-50 bg-white">
-      <Container className="py-5 flex justify-between items-start">
+    <header className="border-b-[1px] sticky w-full top-0 z-[10000] bg-white">
+      <Container className="py-1.5 flex justify-between items-center">
         <Logo />
         <div className="flex-1 pt-1">
           <NavLinks />
-          <MainFilter/>
         </div>
         <div className="flex items-center justify-end max-w-[270px] w-full">
           <button className="hover:text-black hover:bg-gray-100 px-5 rounded-full py-2 text-[15px]">

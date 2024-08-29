@@ -19,7 +19,7 @@ const MainFilter = () => {
   };
 
   return (
-    <div className="border bg-white w-full mt-3 flex rounded-full shadow-lg overflow-hidden">
+    <div className="border bg-white max-w-[750px] mx-auto w-full mt-3 flex rounded-full shadow-lg overflow-hidden">
       <button
         onClick={() => handleMainFilter("destinations")}
         className="py-2 px-5 pl-10 font-normal flex-1 text-[13px] border-r text-gray-500 bg-white rounded-full hover:bg-gray-100"

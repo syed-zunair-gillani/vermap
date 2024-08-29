@@ -5,6 +5,7 @@ import ItemListing from "../Item-listing/ItemListing";
 import CategoriesBarSlider from "@/components/CategoriesBarSlider";
 import { featureSettings } from "@/utils";
 import Slider from "react-slick";
+import Main from "../main/Main";
 
 const Landing = () => {
   const slider = React.useRef<any>(null);
@@ -12,6 +13,7 @@ const Landing = () => {
 
   return (
     <>
+      <Main/>
       <CategoriesBarSlider />
       <Container>
         <ItemListing data={items} />
