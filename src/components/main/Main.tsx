@@ -1,15 +1,20 @@
-import React from 'react'
-import MapComponent from "./MapComponent"
-import MainFilter from '../header/MainFilter'
+import React from "react";
+import MainFilter from "../header/MainFilter";
+import dynamic from "next/dynamic";
+
+const MapComponent = dynamic(() => import('./MapComponent'), {
+  ssr: false
+});
+
 const Main = () => {
   return (
-    <main className='relative'>
-        <MapComponent/>
-        <div className='absolute bottom-14 z-[1000] w-full '>
-        <MainFilter/>
-        </div>
+    <main className="relative">
+      <MapComponent />
+      <div className="absolute bottom-14 z-[1000] w-full ">
+        <MainFilter />
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

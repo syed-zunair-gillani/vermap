@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
           <div className="border-t-[1px] border-gray-200 flex justify-between py-7 mt-10">
           <div className="flex items-center gap-6 text-sm font-light">
-            <p>© 2024 Airbnb, Inc.</p>
+            <p>© 2024 vermap, Inc.</p>
             <ul className="flex items-center gap-6">
               <li>Terms</li>
               <li>Sitemap</li>
