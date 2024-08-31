@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
+import { GlobalProvider } from "@/context/global-context";
 
 
 export const metadata: Metadata = {
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GlobalProvider>
         <Header/>
         {children}
         <Footer/>
+        </GlobalProvider>
       </body>
     </html>
   );

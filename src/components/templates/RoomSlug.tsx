@@ -109,7 +109,7 @@ const RoomSlug = () => {
               <h5 className="text-center font-medium text-[22px] mb-5">
                 Coming August 21
               </h5>
-              <button className="bg-[#e51d52] w-full text-white py-2.5 rounded-lg">
+              <button className="bg-[#111] w-full text-white py-2.5 rounded-lg">
                 Notify me
               </button>
             </div>

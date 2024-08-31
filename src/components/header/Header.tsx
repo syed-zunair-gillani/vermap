@@ -29,20 +29,20 @@ const Header = () => {
           <NavLinks />
         </div>
         <div className="flex items-center justify-end max-w-[270px] w-full">
-          <button className="hover:text-black hover:bg-gray-100 px-5 rounded-full py-2 text-[15px]">
-            Airbnb your home
+          <button className="hover:text-black hover:bg-gray-100 capitalize px-3 rounded-full py-2 text-[15px]">
+            add your business
           </button>
 
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ 
-                ml: 1, 
-                '&:hover': {
-                  background: 'none', 
-                  boxShadow: 'none' 
-                }
-              }}
+            sx={{
+              ml: 1,
+              "&:hover": {
+                background: "none",
+                boxShadow: "none",
+              },
+            }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}

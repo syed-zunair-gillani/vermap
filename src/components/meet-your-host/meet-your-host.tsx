@@ -15,7 +15,7 @@ const MeetYourHost = () => {
             alt="image"
             className="rounded-full h-[90px] w-[90px] object-cover"
           />
-          <div className="bg-[#e51d52] inline-flex rounded-full absolute bottom-2 -right-2 p-1">
+          <div className="bg-[#111] inline-flex rounded-full absolute bottom-2 -right-2 p-1">
             <svg width="1.3em" height="1.3em" viewBox="0 0 24 24">
               <path
                 fill="white"

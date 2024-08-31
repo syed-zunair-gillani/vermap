@@ -1,8 +1,12 @@
+"use client"
 import { Idots } from "@/const";
+import { GlobalContext } from "@/context/global-context";
 import Image from "next/image";
 import React from "react";
+import GModelBox from "./ModelBox";
 
 const GalleryForDesktop = () => {
+  const {seOpenGalleryModel} = React.useContext(GlobalContext)
   return (
     <>
       <section className="grid-cols-2 gap-2 rounded-xl hidden md:grid overflow-hidden relative">
@@ -60,10 +64,11 @@ const GalleryForDesktop = () => {
             <div className="absolute inset-0 group-hover:bg-black/10" />
           </figure>
         </div>
-        <button className="absolute right-4 bottom-4 normal-case px-3 py-1.5 items-center rounded-lg !border !border-black bg-white text-black font-medium flex gap-1.5">
+        <button onClick={()=>seOpenGalleryModel(true)} className="absolute right-4 bottom-4 normal-case px-3 py-1.5 items-center rounded-lg !border !border-black bg-white text-black font-medium flex gap-1.5">
           {Idots()} Show all photos
         </button>
       </section>
+      <GModelBox/>
     </>
   );
 };
