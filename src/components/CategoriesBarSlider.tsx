@@ -1,24 +1,32 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Slider from "react-slick";
 import Container from "./ui/container";
 import {cateorySettings} from '@/utils'
-import Link from "next/link";
+import { GlobalContext } from "@/context/global-context";
 
 const CategoriesBarSlider = () => {
   const slider = React.useRef<any>(null);
+  const {setCategory, setListing, listing, category} = useContext(GlobalContext)
+  const [items, setItems] = useState(listing)
+
+  const handleListingCategory = (slug:any) => {
+    const filterListing = items?.filter((item:any)=>item.category === slug)
+    setListing(filterListing)
+    setCategory(slug)
+  }
 
   return (
-    <section className="border-t-[1px] py-4 ">
+    <section className="border-t-[1px] py-4 sticky top-[70px] z-10 bg-white">
       <Container >
         <div className="relative">
           <Slider {...cateorySettings} ref={slider} className="pl-5 pr-8">
             {categoriesList?.map((item: any, idx: number) => (
-              <Link
-                href={`/category/${item?.slug}`}
+              <button
                 key={idx}
-                className="opacity-60 hover:opacity-100 cursor-pointer !flex flex-col items-center justify-center"
+                className={`opacity-60 outline-none hover:opacity-100 cursor-pointer !flex flex-col items-center border-transparent justify-center ${category === item.slug && "opacity-100"}`}
+                onClick={()=>handleListingCategory(item?.slug)}
               >
                 <Image
                   src={item.icon}
@@ -27,8 +35,8 @@ const CategoriesBarSlider = () => {
                   height={32}
                   className=""
                 />
-                <h6 className="text-[13px]">{item?.title}</h6>
-              </Link>
+                <h6 className={`text-[13px] border-b-[2px] border-transparent pb-2 ${category === item.slug && "border-black"}`}>{item?.title}</h6>
+              </button>
             ))}
           </Slider>
           <button
