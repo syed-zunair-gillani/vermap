@@ -21,6 +21,9 @@
 body, html{
     font-family: cereal;
 }
+html {
+    scroll-behavior: smooth;
+  }
 .slick-dots{
     bottom: 10px;
     margin-left: -10px;
