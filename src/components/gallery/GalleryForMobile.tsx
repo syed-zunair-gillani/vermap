@@ -3,11 +3,11 @@ import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 
-const GalleryForMobile = () => {
+const GalleryForMobile = ({data}:any) => {
   return (
     <section className="md:hidden relative">
       <Slider {...settings}>
-        {galleryImages?.map((url, idx) => (
+        {data?.map((url:any, idx:number) => (
           <figure className="relative group cursor-pointer" key={idx}>
             <Image
               src={url}

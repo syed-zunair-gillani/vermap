@@ -9,7 +9,7 @@ import Features from "../modules/room-slug/features";
 import MeetYourHost from "../meet-your-host/meet-your-host";
 import SingleListMap from "../map/singleListMap";
 
-const RoomSlug = () => {
+const RoomSlug = ({data}:any) => {
   return (
     <section className="max-w-[1280px] mx-auto">
       <Container className="!px-0 md:px-3">
@@ -17,7 +17,7 @@ const RoomSlug = () => {
         <section className="flex flex-col-reverse md:flex-col">
           <div className="flex justify-between items-center gap-4 py-3 md:py-5 px-4 md:px-0">
             <h2 className="font-medium text-lg sm:text-2xl md:text-[28px]">
-              PASSAMBHATI VILLA /Cape Shark Villas, 4-10 pers.
+              {data?.title}
             </h2>
             <div className="items-center gap-1 hidden md:flex">
               <Button className="flex gap-2 items-center text-gray-600 hover:rounded-md">
@@ -31,9 +31,9 @@ const RoomSlug = () => {
             </div>
           </div>
           {/* Images gallery for Desktop */}
-          <GalleryForDesktop />
+          <GalleryForDesktop data={data?.images}/>
           {/* Images gallery for Mobile */}
-          <GalleryForMobile />
+          <GalleryForMobile data={data?.images} />
         </section>
       </Container>
       <Container className="px-4 md:mt-7">

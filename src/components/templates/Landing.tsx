@@ -9,11 +9,11 @@ import Main from "../main/Main";
 
 const Landing = () => {
   const slider = React.useRef<any>(null);
-  const [activeInspiration, setActiveInspiration] = useState<any>(features[0])
+  const [activeInspiration, setActiveInspiration] = useState<any>(features[0]);
 
   return (
     <>
-      <Main/>
+      <Main />
       <CategoriesBarSlider />
       <Container>
         <ItemListing data={items} />
@@ -29,15 +29,23 @@ const Landing = () => {
               ref={slider}
               className="mt-5"
             > */}
-              {features?.map((item: any, idx: number) => (
-                <div
-                  key={idx}
-                  onClick={()=>setActiveInspiration(item)}
-                  className=""
+            {features?.map((item: any, idx: number) => (
+              <div
+                key={idx}
+                onClick={() => setActiveInspiration(item)}
+                className=""
+              >
+                <h6
+                  className={`border-b-[3px]  cursor-pointer py-4 ${
+                    activeInspiration?.name === item?.name
+                      ? "border-gray-600"
+                      : "border-transparent text-gray-600"
+                  }`}
                 >
-                  <h6 className={`border-b-[3px]  cursor-pointer py-4 ${activeInspiration?.name === item?.name ? 'border-gray-600' : 'border-transparent text-gray-600'}`}>{item?.name}</h6>
-                </div>
-              ))}
+                  {item?.name}
+                </h6>
+              </div>
+            ))}
             {/* </Slider> */}
             {/* <button
               onClick={() => slider?.current?.slickPrev()}
@@ -76,14 +84,12 @@ const Landing = () => {
           </div>
           <section>
             <ul className="mt-8 grid grid-cols-6 gap-4 gap-y-5">
-            {
-              activeInspiration?.items?.map((item:any, id:any)=>(
+              {activeInspiration?.items?.map((item: any, id: any) => (
                 <li key={id} className="text-sm">
-                    <h6>{item?.name}</h6>
-                    <p className="font-light text-gray-600">{item?.stay}</p>
+                  <h6>{item?.name}</h6>
+                  <p className="font-light text-gray-600">{item?.stay}</p>
                 </li>
-              ))
-            }
+              ))}
             </ul>
           </section>
         </Container>
@@ -94,11 +100,12 @@ const Landing = () => {
 
 export default Landing;
 
-const items = [
+export const items = [
   {
     title: "Train at the X-Mansion",
     storeName: "Tech Store",
     price: 29.99,
+    slug: "train-at-the-x-mansion",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -110,10 +117,13 @@ const items = [
     title: "Open the Olympic Games at Musée d'Orsay",
     storeName: "Gadget Shop",
     price: 59.99,
+    slug: "open-the-olympic-games-at-musee-d-orsay",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
       "/images/i3.webp",
+      "/images/i4.jpeg",
+      "/images/i4.jpeg",
       "/images/i4.jpeg",
     ],
   },
@@ -121,6 +131,7 @@ const items = [
     title: "Gaming Keyboard",
     storeName: "Gaming Gear",
     price: 89.99,
+    slug: "gaming-keyboard",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -132,6 +143,7 @@ const items = [
     title: "Train at the X-Mansion",
     storeName: "Tech Store",
     price: 29.99,
+    slug: "train-at-the-x-mansion",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -143,6 +155,7 @@ const items = [
     title: "Open the Olympic Games at Musée d'Orsay",
     storeName: "Gadget Shop",
     price: 59.99,
+    slug: "open-the-olympic-games-at-musee-d-orsay",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -154,6 +167,7 @@ const items = [
     title: "Gaming Keyboard",
     storeName: "Gaming Gear",
     price: 89.99,
+    slug: "gaming-keyboard",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -165,6 +179,7 @@ const items = [
     title: "Train at the X-Mansion",
     storeName: "Tech Store",
     price: 29.99,
+    slug: "train-at-the-x-mansion",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -176,6 +191,7 @@ const items = [
     title: "Open the Olympic Games at Musée d'Orsay",
     storeName: "Gadget Shop",
     price: 59.99,
+    slug: "open-the-olympic-games-at-musee-d-orsay",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -187,6 +203,7 @@ const items = [
     title: "Gaming Keyboard",
     storeName: "Gaming Gear",
     price: 89.99,
+    slug: "gaming-keyboard",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -198,6 +215,7 @@ const items = [
     title: "Train at the X-Mansion",
     storeName: "Tech Store",
     price: 29.99,
+    slug: "train-at-the-x-mansion",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -209,6 +227,7 @@ const items = [
     title: "Open the Olympic Games at Musée d'Orsay",
     storeName: "Gadget Shop",
     price: 59.99,
+    slug: "open-the-olympic-games-at-musee-d-orsay",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -220,6 +239,7 @@ const items = [
     title: "Gaming Keyboard",
     storeName: "Gaming Gear",
     price: 89.99,
+    slug: "gaming-keyboard",
     images: [
       "/images/i1.webp",
       "/images/i2.webp",
@@ -228,6 +248,7 @@ const items = [
     ],
   },
 ];
+
 
 const features = [
   {

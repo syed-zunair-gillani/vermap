@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { GlobalContext } from "@/context/global-context";
+import Image from "next/image";
 
 const style = {
   position: "absolute" as "absolute",
@@ -17,7 +18,7 @@ const style = {
   p: 4,
 };
 
-export default function GModelBox() {
+export default function GModelBox({ data }: any) {
   const { openGalleryModel, seOpenGalleryModel } =
     React.useContext(GlobalContext);
 
@@ -32,9 +33,13 @@ export default function GModelBox() {
         aria-describedby="modal-modal-description"
         className="z-[9999999]"
       >
-        <Box sx={style} className="w-[100vw] h-[100vh]">
-          <div>
-            <button onClick={handleClose} className="bg-black p-1.5 rounded-full">
+        
+        <Box sx={style} className="w-[100vw] h-[100vh] relative overflow-y-scroll">
+        <div>
+            <button
+              onClick={handleClose}
+              className="bg-black p-1.5 fixed rounded-full"
+            >
               <svg width="1.2em" height="1.2em" viewBox="0 0 1024 1024">
                 <path
                   fill="#fff"
@@ -43,12 +48,19 @@ export default function GModelBox() {
               </svg>
             </button>
           </div>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <div className="flex flex-col gap-4 mt-12">
+            {data?.map((item: any, idx: number) => (
+              <figure key={idx}>
+                <Image
+                  src={item}
+                  alt={item}
+                  width={600}
+                  height={800}
+                  className="w-full"
+                />
+              </figure>
+            ))}
+          </div>
         </Box>
       </Modal>
     </div>

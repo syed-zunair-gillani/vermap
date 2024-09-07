@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import Container from "./ui/container";
 import {cateorySettings} from '@/utils'
+import Link from "next/link";
 
 const CategoriesBarSlider = () => {
   const slider = React.useRef<any>(null);
@@ -14,7 +15,8 @@ const CategoriesBarSlider = () => {
         <div className="relative">
           <Slider {...cateorySettings} ref={slider} className="pl-5 pr-8">
             {categoriesList?.map((item: any, idx: number) => (
-              <div
+              <Link
+                href={`/category/${item?.slug}`}
                 key={idx}
                 className="opacity-60 hover:opacity-100 cursor-pointer !flex flex-col items-center justify-center"
               >
@@ -26,7 +28,7 @@ const CategoriesBarSlider = () => {
                   className=""
                 />
                 <h6 className="text-[13px]">{item?.title}</h6>
-              </div>
+              </Link>
             ))}
           </Slider>
           <button
@@ -57,107 +59,107 @@ export default CategoriesBarSlider;
 const categoriesList = [
   {
     title: "Hotels",
-    slug: "/hotels",
+    slug: "hotels",
     icon: "/icons/hotels.svg",
   },
   {
     title: "Beauty",
-    slug: "/beauty",
+    slug: "beauty",
     icon: "/icons/beauty.svg",
   },
   {
     title: "Restaurants",
-    slug: "/restaurants",
+    slug: "restaurants",
     icon: "/icons/restaurants.svg",
   },
   {
     title: "Fitness",
-    slug: "/fitness",
+    slug: "fitness",
     icon: "/icons/Fitness.svg",
   },
   {
     title: "Rantal",
-    slug: "/rantal",
+    slug: "rantal",
     icon: "/icons/Rantal.svg",
   },
   {
     title: "Services",
-    slug: "/services",
+    slug: "services",
     icon: "/icons/services.svg",
   },
   {
     title: "Events",
-    slug: "/events",
+    slug: "events",
     icon: "/icons/events.svg",
   },
   {
     title: "Hotels",
-    slug: "/hotels",
+    slug: "hotels",
     icon: "/icons/hotels.svg",
   },
   {
     title: "Beauty",
-    slug: "/beauty",
+    slug: "beauty",
     icon: "/icons/beauty.svg",
   },
   {
     title: "Restaurants",
-    slug: "/restaurants",
+    slug: "restaurants",
     icon: "/icons/restaurants.svg",
   },
   {
     title: "Fitness",
-    slug: "/fitness",
+    slug: "fitness",
     icon: "/icons/Fitness.svg",
   },
   {
     title: "Rantal",
-    slug: "/rantal",
+    slug: "rantal",
     icon: "/icons/Rantal.svg",
   },
   {
     title: "Services",
-    slug: "/services",
+    slug: "services",
     icon: "/icons/services.svg",
   },
   {
     title: "Events",
-    slug: "/events",
+    slug: "events",
     icon: "/icons/events.svg",
   },
   {
     title: "Hotels",
-    slug: "/hotels",
+    slug: "hotels",
     icon: "/icons/hotels.svg",
   },
   {
     title: "Beauty",
-    slug: "/beauty",
+    slug: "beauty",
     icon: "/icons/beauty.svg",
   },
   {
     title: "Restaurants",
-    slug: "/restaurants",
+    slug: "restaurants",
     icon: "/icons/restaurants.svg",
   },
   {
     title: "Fitness",
-    slug: "/fitness",
+    slug: "fitness",
     icon: "/icons/Fitness.svg",
   },
   {
     title: "Rantal",
-    slug: "/rantal",
+    slug: "rantal",
     icon: "/icons/Rantal.svg",
   },
   {
     title: "Services",
-    slug: "/services",
+    slug: "services",
     icon: "/icons/services.svg",
   },
   {
     title: "Events",
-    slug: "/events",
+    slug: "events",
     icon: "/icons/events.svg",
   },
 ];
