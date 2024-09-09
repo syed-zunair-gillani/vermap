@@ -22,7 +22,7 @@ const CategoriesBarSlider = () => {
   };
 
   return (
-    <section className="border-t-[1px] pt-4 pb-[1px] sticky top-[70px] z-10 bg-white">
+    <section className="border-t-[1px] pt-4 pb-2 sticky top-[70px] z-10 bg-white">
       <Container>
         <div className="relative">
           <Slider {...cateorySettings} ref={slider} className="pl-5 pr-8">

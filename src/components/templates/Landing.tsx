@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import Main from "../main/Main";
 import {features, listingItems} from "../../../public/data"
 import { GlobalContext } from "@/context/global-context";
+import Link from "next/link";
 
 const Landing = () => {
   const slider = React.useRef<any>(null);
@@ -89,7 +90,7 @@ const Landing = () => {
             <ul className="mt-8 grid grid-cols-6 gap-4 gap-y-5">
               {activeInspiration?.items?.map((item: any, id: any) => (
                 <li key={id} className="text-sm">
-                  <h6>{item?.name}</h6>
+                  <h6><Link href={`/${item?.name}/${item?.stay}`}>{item?.name}</Link></h6>
                   <p className="font-light text-gray-600">{item?.stay}</p>
                 </li>
               ))}
