@@ -6,28 +6,24 @@ const Footer = () => {
   return (
     <section className="bg-[#f7f7f7] pt-[48px] border-t-[1px] border-gray-300">
       <Container>
-          <div className="grid md:grid-cols-3">
-            {
-              footerNav?.map((item,idx)=>(
-                <div key={idx}>
-                  <h6>{item.title}</h6>
-                  <ul className="mt-3">
-                    {
-                      item?.links.map((link,id)=>(
-                        <li key={id} className="font-light text-gray-500 py-1.5">
-                          <Link href={'/'+link.href}>{link.label}</Link>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
-              ))
-            }
-          </div>
-          <div className="border-t-[1px] border-gray-200 flex justify-between py-7 mt-10">
-          <div className="flex items-center gap-6 text-sm font-light">
+        <div className="grid md:grid-cols-3">
+          {footerNav?.map((item, idx) => (
+            <div key={idx}>
+              <h6>{item.title}</h6>
+              <ul className="mt-3">
+                {item?.links.map((link, id) => (
+                  <li key={id} className="font-light text-gray-500 py-1.5">
+                    <Link href={"/" + link.href}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="border-t-[1px] border-gray-200 flex gap-3 flex-col md:flex-row justify-center items-center md:justify-between py-7 mt-10">
+          <div className="flex flex-col md:flex-row items-center gap-6 text-sm font-light">
             <p>© 2024 vermap, Inc.</p>
-            <ul className="flex items-center gap-6">
+            <ul className="flex items-center gap-3 md:gap-6 flex-wrap justify-center">
               <li>Terms</li>
               <li>Sitemap</li>
               <li>Privacy</li>
@@ -38,7 +34,7 @@ const Footer = () => {
             <h6>English (US)</h6>
             <h6>$ USD</h6>
           </div>
-          </div>
+        </div>
       </Container>
     </section>
   );
@@ -46,93 +42,92 @@ const Footer = () => {
 
 export default Footer;
 
-
 const footerNav = [
   {
     title: "Support",
     links: [
       {
         label: "Help Center",
-        href: "#"
+        href: "#",
       },
       {
         label: "AirCover",
-        href: "#"
+        href: "#",
       },
       {
         label: "Anti-discrimination",
-        href: "#"
+        href: "#",
       },
       {
         label: "Disability support",
-        href: "#"
+        href: "#",
       },
       {
         label: "Cancellation options",
-        href: "#"
+        href: "#",
       },
       {
         label: "Report neighborhood concern",
-        href: "#"
+        href: "#",
       },
-    ]
+    ],
   },
   {
     title: "Hosting",
     links: [
       {
         label: "Airbnb your home",
-        href: "#"
+        href: "#",
       },
       {
         label: "AirCover for Hosts",
-        href: "#"
+        href: "#",
       },
       {
         label: "Hosting resources",
-        href: "#"
+        href: "#",
       },
       {
         label: "Community forum",
-        href: "#"
+        href: "#",
       },
       {
         label: "Hosting responsibly",
-        href: "#"
+        href: "#",
       },
       {
         label: "Airbnb-friendly apartments",
-        href: "#"
+        href: "#",
       },
       {
         label: "Join a free Hosting class",
-        href: "#"
+        href: "#",
       },
-    ]
+    ],
   },
   {
     title: "Airbnb",
     links: [
       {
         label: "Newsroom",
-        href: "#"
+        href: "#",
       },
       {
         label: "New features",
-        href: "#"
+        href: "#",
       },
       {
         label: "Careers",
-        href: "#"
+        href: "#",
       },
       {
         label: "Investors",
-        href: "#"
+        href: "#",
       },
       {
         label: "Gift cards",
-        href: "#"
+        href: "#",
       },
-    ]
-  }
-]
+    ],
+  },
+];

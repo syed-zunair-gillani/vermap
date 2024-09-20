@@ -58,3 +58,9 @@ html {
 .box-shadow{
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);;
 }
+
+.box-shadow-2{
+    padding: 30px 25px;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}

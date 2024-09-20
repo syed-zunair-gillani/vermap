@@ -10,6 +10,7 @@ import Container from "../ui/container";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MainFilter from "./MainFilter";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -23,7 +24,7 @@ const Header = () => {
 
   return (
     <header className="border-b-[1px] sticky w-full top-0 z-[10000] bg-white">
-      <Container className="py-1.5 flex justify-between items-center">
+      <Container className="py-1.5 hidden md:flex justify-between items-center">
         <Logo />
         <div className="flex-1 pt-1">
           <NavLinks />
@@ -112,6 +113,7 @@ const Header = () => {
           </Menu>
         </div>
       </Container>
+      <MobileNav/>
     </header>
   );
 };
