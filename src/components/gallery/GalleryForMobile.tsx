@@ -10,7 +10,7 @@ const GalleryForMobile = ({data}:any) => {
         {data?.map((url:any, idx:number) => (
           <figure className="relative group cursor-pointer" key={idx}>
             <Image
-              src={url}
+              src={url?.sizes?.medium}
               width={800}
               height={320}
               alt="image"
@@ -33,11 +33,3 @@ var settings = {
   slidesToScroll: 1,
   arrows: false
 };
-
-const galleryImages = [
-  "/images/1.png",
-  "/images/2.png",
-  "/images/3.png",
-  "/images/4.png",
-  "/images/5.png",
-];

@@ -18,7 +18,7 @@ const CategoriesBarSlider = () => {
     const filterListing = items?.filter((item: any) => item.category === slug);
     setListing(filterListing);
     setCategory(slug);
-    // router.push(`?category=${slug}`);
+    router.push(`?category=${slug}`);
   };
 
   return (

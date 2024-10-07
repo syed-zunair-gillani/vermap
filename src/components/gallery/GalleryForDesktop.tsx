@@ -19,7 +19,7 @@ const GalleryForDesktop = ({ data }: any) => {
           <div key={id}>
             <figure className="relative group cursor-pointer">
               <Image
-                src={item}
+                src={item?.sizes?.medium}
                 width={800}
                 height={460}
                 alt="image"
@@ -39,46 +39,15 @@ const GalleryForDesktop = ({ data }: any) => {
           {data?.slice(1, 5)?.map((item: any, id: number) => (
             <figure className={`relative group cursor-pointer ${data?.length === 4 && id === 2 && "col-span-2"}`} key={id}>
               <Image
-                src={item}
+                src={item?.sizes?.medium}
                 width={800}
                 height={460}
-                alt="image"
+                alt={item?.title || "image"}
                 className={`w-full ${data?.length >= 3 ? "h-[226px]" :  "h-[460px]"} object-cover`}
               />
               <div className="absolute inset-0 group-hover:bg-black/10" />
             </figure>
           ))}
-
-          {/* <figure className="relative group cursor-pointer">
-            <Image
-              src="/images/2.png"
-              width={800}
-              height={400}
-              alt="image"
-              className="w-full h-[226px] object-cover"
-            />
-            <div className="absolute inset-0 group-hover:bg-black/10" />
-          </figure>
-          <figure className="relative group cursor-pointer">
-            <Image
-              src="/images/3.png"
-              width={800}
-              height={400}
-              alt="image"
-              className="w-full h-[226px] object-cover"
-            />
-            <div className="absolute inset-0 group-hover:bg-black/10" />
-          </figure>
-          <figure className="relative group cursor-pointer">
-            <Image
-              src="/images/4.png"
-              width={800}
-              height={400}
-              alt="image"
-              className="w-full h-[226px] object-cover"
-            />
-            <div className="absolute inset-0 group-hover:bg-black/10" />
-          </figure> */}
         </div>
 
         <button

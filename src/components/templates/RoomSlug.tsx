@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Container from "../ui/container";
 import { Iheart, Ishare } from "@/const";
@@ -7,9 +8,10 @@ import GalleryForMobile from "../gallery/GalleryForMobile";
 import Image from "next/image";
 import Features from "../modules/room-slug/features";
 import MeetYourHost from "../meet-your-host/meet-your-host";
-import SingleListMap from "../map/singleListMap";
+
 
 const RoomSlug = ({data}:any) => {
+  console.log("🚀 ~ RoomSlug ~ data:", data)
   return (
     <section className="max-w-[1280px] mx-auto">
       <Container className="!px-0 md:px-3">
@@ -17,7 +19,7 @@ const RoomSlug = ({data}:any) => {
         <section className="flex flex-col-reverse md:flex-col">
           <div className="flex justify-between items-center gap-4 py-3 md:py-5 px-4 md:px-0">
             <h2 className="font-medium text-lg sm:text-2xl md:text-[28px]">
-              {data?.title}
+              {data?.title?.rendered}
             </h2>
             <div className="items-center gap-1 hidden md:flex">
               <Button className="flex gap-2 items-center text-gray-600 hover:rounded-md">
@@ -31,9 +33,9 @@ const RoomSlug = ({data}:any) => {
             </div>
           </div>
           {/* Images gallery for Desktop */}
-          <GalleryForDesktop data={data?.images}/>
+          <GalleryForDesktop data={data?.acf?.images_gallery}/>
           {/* Images gallery for Mobile */}
-          <GalleryForMobile data={data?.images} />
+          <GalleryForMobile data={data?.acf?.images_gallery} />
         </section>
       </Container>
       <Container className="px-4 md:mt-7">
@@ -58,7 +60,7 @@ const RoomSlug = ({data}:any) => {
                 />
               </figure>
               <div>
-                <h6>Hosted by Polly Pocket</h6>
+                <h6 className="capitalize">Hosted by {data?.acf?.store_name}</h6>
                 <p className="font-light text-gray-500">Big adventurer</p>
               </div>
             </div>

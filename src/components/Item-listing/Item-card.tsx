@@ -11,11 +11,11 @@ const ItemCard = ({ data }: any) => {
     <div className="">
       <div className="relative group cursor-pointer ">
         <Slider {...settings} ref={slider}>
-          {data?.images?.map((item: any, idx: number) => (
+          {data?.acf?.images_gallery?.map((item: any, idx: number) => (
             <figure key={idx} className="rounded-[14px] !overflow-hidden">
               <Link href={`/rooms/${data?.slug}`}>
               <Image
-                src={item}
+                src={item?.sizes?.medium}
                 alt={data?.title}
                 width={285}
                 height={285}
@@ -47,10 +47,10 @@ const ItemCard = ({ data }: any) => {
       </div>
 
       <h5 className="text-[15px] font-medium line-clamp-1 mt-1 px-1">
-        <Link href={`/rooms/${data?.slug}`}>{data?.title}</Link>
+        <Link href={`/rooms/${data?.slug}`}>{data?.title?.rendered}</Link>
       </h5>
       <p className="text-gray-500 font-light text-sm px-1">
-        Hosted by {data?.storeName}
+        Hosted by {data?.acf?.store_name}
       </p>
       <h5 className="text-[15px] font-medium line-clamp-1 px-1">
         ${data?.price} <span className="font-light">per guest</span>

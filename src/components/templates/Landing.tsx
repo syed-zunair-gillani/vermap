@@ -10,7 +10,8 @@ import { features, listingItems } from "../../../public/data";
 import { GlobalContext } from "@/context/global-context";
 import Link from "next/link";
 
-const Landing = () => {
+const Landing = ({data}:any) => {
+  console.log("🚀 ~ Landing ~ data:", data)
   const [activeInspiration, setActiveInspiration] = useState<any>(features[0]);
   const { listing } = useContext(GlobalContext);
 
@@ -19,7 +20,7 @@ const Landing = () => {
       <Main />
       <CategoriesBarSlider />
       <Container>
-        <ItemListing data={listing} />
+        <ItemListing data={data} />
       </Container>
       <section className="bg-[#f7f7f7] py-[48px] mt-16">
         <Container>
