@@ -11,7 +11,6 @@ import { GlobalContext } from "@/context/global-context";
 import Link from "next/link";
 
 const Landing = ({data}:any) => {
-  console.log("🚀 ~ Landing ~ data:", data)
   const [activeInspiration, setActiveInspiration] = useState<any>(features[0]);
   const { listing } = useContext(GlobalContext);
 

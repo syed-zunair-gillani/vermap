@@ -5,6 +5,7 @@ import React from "react";
 import Slider from "react-slick";
 
 const ItemCard = ({ data }: any) => {
+  console.log("🚀 ~ ItemCard ~ data: 11", data?.acf?.room_types)
   const slider = React.useRef<any>(null);
 
   return (
@@ -53,7 +54,7 @@ const ItemCard = ({ data }: any) => {
         Hosted by {data?.acf?.store_name}
       </p>
       <h5 className="text-[15px] font-medium line-clamp-1 px-1">
-        ${data?.price} <span className="font-light">per guest</span>
+        ${data?.acf?.room_types[0]?.price_per_night} <span className="font-light">per guest</span>
       </h5>
     </div>
   );

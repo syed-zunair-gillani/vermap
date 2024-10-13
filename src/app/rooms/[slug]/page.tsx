@@ -1,7 +1,5 @@
-"use client"
 import RoomSlug from '@/components/templates/RoomSlug'
 import React from 'react'
-import { listingItems } from '../../../../public/data'
 import { fetchApiInstance } from '@/utils/fetchApiInstance';
 
 async function getData(params:any) {
@@ -12,7 +10,6 @@ async function getData(params:any) {
 }
 
 const RoomsSlug = async({params}:any) => {
-  // const data = listingItems?.find((item:any)=>item.slug === params?.slug)
   const data = await getData(params?.slug)
   
   return (

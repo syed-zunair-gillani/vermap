@@ -1,5 +1,5 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Container from "../ui/container";
 import { Iheart, Ishare } from "@/const";
 import { Button } from "@mui/material";
@@ -9,9 +9,20 @@ import Image from "next/image";
 import Features from "../modules/room-slug/features";
 import MeetYourHost from "../meet-your-host/meet-your-host";
 
+const RoomSlug = ({ data }: any) => {
+  console.log("🚀 ~ RoomSlug ~ data: 111", data);
+  console.log("🚀 ~ RoomSlug ~ data:", data?.acf?.room_types?.[0]);
+  const [roomType, setRoomType] = useState<string>("");
+  const [typesData, setTypesData] = useState<any>(data?.acf?.room_types?.[0]);
+  console.log("🚀 ~ RoomSlug ~ typesData: 11", typesData);
 
-const RoomSlug = ({data}:any) => {
-  console.log("🚀 ~ RoomSlug ~ data:", data)
+  const handleRoomType = (type: string) => {
+    setRoomType(type);
+    const res =
+      data?.acf?.room_types?.find((item: any) => item.type === type) || {};
+    setTypesData(res);
+  };
+
   return (
     <section className="max-w-[1280px] mx-auto">
       <Container className="!px-0 md:px-3">
@@ -33,7 +44,7 @@ const RoomSlug = ({data}:any) => {
             </div>
           </div>
           {/* Images gallery for Desktop */}
-          <GalleryForDesktop data={data?.acf?.images_gallery}/>
+          <GalleryForDesktop data={data?.acf?.images_gallery} />
           {/* Images gallery for Mobile */}
           <GalleryForMobile data={data?.acf?.images_gallery} />
         </section>
@@ -42,12 +53,30 @@ const RoomSlug = ({data}:any) => {
         <section className="flex">
           <div className="md:w-[60%]">
             <h3 className="sm:font-medium sm:text-lg md:text-2xl">
-              Westford, Massachusetts
+              {data?.acf?.location}
             </h3>
-            <p className="text-gray-600 font-light text-base mb-8">
-              4 guests <span> · </span> 1 bedroom <span> · </span> 5 beds{" "}
-              <span> · </span> Private half-bath
+            <p className="text-gray-600 font-light text-base ">
+              {typesData?.total_guests} guests <span> · </span>{" "}
+              {typesData?.beds} <span> · </span>
+              {typesData?.room_size} ft<sup>2</sup>
             </p>
+            <p className="mb-6 mt-1 font-light">{typesData?.description}</p>
+            <div className="border mb-5 rounded-xl overflow-hidden !inline-block">
+              {data?.acf?.room_types?.map((item: any, id: number) => (
+                <button
+                  key={id}
+                  onClick={() => handleRoomType(item?.type)}
+                  className={`p-3 px-8 hover:bg-black hover:!text-white ${
+                    (roomType || typesData.type) === item?.type &&
+                    "bg-black text-white"
+                  } ${
+                    id + 1 !== data?.acf?.room_types?.length && "border-r-[1px]"
+                  }`}
+                >
+                  {item?.type}
+                </button>
+              ))}
+            </div>
             <hr />
             <div className="flex items-center gap-6 py-5">
               <figure>
@@ -60,60 +89,110 @@ const RoomSlug = ({data}:any) => {
                 />
               </figure>
               <div>
-                <h6 className="capitalize">Hosted by {data?.acf?.store_name}</h6>
+                <h6 className="capitalize">
+                  Hosted by {data?.acf?.store_name}
+                </h6>
                 <p className="font-light text-gray-500">Big adventurer</p>
               </div>
             </div>
             <hr />
-            <Features items={featuresList} />
+            <Features items={data?.acf?.amenities} lowgap />
             <hr />
             <div className="mt-5 py-6 content">
-              <p>
-                Hi, friends! Playdate at my place! You in? I’ll be off on a 35th
-                birthday adventure, but my life-sized Slumber Party Fun compact
-                is all yours for the day. I left everything just the way you
-                remember it—from all the way back in ’94! Can you believe it’s
-                been that long?! Anyway, grab your BFFs—I set up a retro bash
-                that’s sure to be a blast!{" "}
-              </p>
-              <strong>What you’ll do</strong>
-              <p>
-                I set up my compact to feel like you’re still actually in the
-                ’90s! Just picture it—crafting, throwback snacks, Polaroid
-                cameras… it’s going to be AMAZING. Basically, I turned my
-                Slumber Party Fun compact into a time machine where your
-                imagination can run wild. Because there’s no greater adventure
-                than the one you create for yourself.{" "}
-              </p>
-              <p>Here’s the 411—let’s do this! </p>
-              <p>
-                • Remember when we used to give each other makeovers and gab
-                until morning? Well, my vanity has everything you need to relive
-                that magic. Press-on nails and butterfly hair clips, anyone?!
-              </p>
-              <p>
-                • My compact is stuffed to the brim with all my favorite snacks
-                from the greatest era in snacking history. Ring Pops and Push
-                Pops and Ba
-              </p>
-              <p>
-                • Before you leave, I made sure you’ll be able to commemorate
-                your adventure with a group photo right outside my compact. I’m
-                not saying it would DEFINITELY be the cover pic of your
-                ‘90s-style scrapbook, but come on.
-              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: data.content?.rendered }}
+              />
             </div>
+            <hr />
+            <section className="py-6">
+              <h3 className="sm:font-medium sm:text-lg md:text-2xl">
+                Room Amenities
+              </h3>
+              <ul className="mt-4 grid gap-4 md:grid-cols-2">
+                {data?.acf?.room_amenities?.map((item: any, id: number) => (
+                  <li key={id} className="flex items-center gap-2">
+                    <Image
+                      src={item.icon}
+                      alt={item.feature}
+                      width={30}
+                      height={30}
+                    />
+                    <span>{item?.feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <hr />
+            <section className="py-6">
+              <h3 className="sm:font-medium sm:text-lg md:text-2xl">
+                Room Policies
+              </h3>
+              <ul className="mt-4 grid gap-4 md:grid-cols-2">
+                {data?.acf?.room_policies?.map((item: any, id: number) => (
+                  <li key={id} className="flex items-center gap-2">
+                    <Image
+                      src={item.icon}
+                      alt={item.policy}
+                      width={30}
+                      height={30}
+                    />
+                    <span>{item?.policy}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
             <hr />
             <MeetYourHost />
           </div>
           <aside className="flex-1 ml-[95px] hidden md:block">
             <div className="notifybadge">
-              <h5 className="text-center font-medium text-[22px] mb-5">
-                Coming August 21
-              </h5>
-              <button className="bg-[#111] w-full text-white py-2.5 rounded-lg">
-                Notify me
+              <h6 className="text-xl text-gray-600">
+                <strong className="text-2xl text-black">
+                  ${typesData?.price_per_night}
+                </strong>{" "}
+                night
+              </h6>
+              <div className="border text-sm rounded-lg overflow-hidden mt-4">
+                <div className="flex">
+                  <div className="flex-1 p-2 px-3 border-r">
+                    <h6>Check-in</h6>
+                    <p className="text-gray-600">11/3/2024</p>
+                  </div>
+                  <div className="flex-1 p-2 px-3">
+                    <h6>Check-out</h6>
+                    <p className="text-gray-600">11/3/2024</p>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex-1 p-2 px-3 border-t">
+                    <h6>Guest</h6>
+                    <p className="text-gray-600">1 guest</p>
+                  </div>
+                </div>
+              </div>
+              <button className="bg-[#111] hover:bg-gray-900 w-full mt-5 text-white py-2.5 rounded-lg">
+                Reserve
               </button>
+              <p className="text-center my-4 text-gray-600">
+                You won't be charged yet
+              </p>
+              <div className="mt-5 font-light mb-5">
+                <p className="text-gray-600 flex items-center gap-3 justify-between">
+                  <span className="underline">$220 x 2 nights</span>
+                  <span>$440</span>
+                </p>
+                <p className="text-gray-600 flex mt-2 items-center gap-3 justify-between">
+                  <span className="underline">Vermap service fee</span>
+                  <span>$62</span>
+                </p>
+              </div>
+              <hr/>
+              <div className="mt-4">
+              <p className=" flex mt-2 items-center gap-3 justify-between">
+                  <span className="underline">Total before taxes</span>
+                  <span>$502</span>
+                </p>
+              </div>
             </div>
           </aside>
         </section>
@@ -125,9 +204,7 @@ const RoomSlug = ({data}:any) => {
           <h3 className="sm:font-medium sm:text-lg md:text-2xl">
             Where you’ll be
           </h3>
-          <p className="mt-4 text-gray-600">
-            Westford, Massachusetts, United States{" "}
-          </p>
+          <p className="mt-4 text-gray-600">{data?.acf?.location}</p>
         </div>
         {/* <SingleListMap/> */}
       </Container>
@@ -196,11 +273,13 @@ const RoomSlug = ({data}:any) => {
         <hr />
         <div className=" max-w-[560px] my-10">
           <p className="mt-4 text-gray-600 text-sm font-light">
-          If you’re selected and decide to book, you’ll have 24 hours to complete the purchase. Travel costs are not included. See the full rules, including age and geographic eligibility, how data will be used, odds of being selected, and other terms.
+            If you’re selected and decide to book, you’ll have 24 hours to
+            complete the purchase. Travel costs are not included. See the full
+            rules, including age and geographic eligibility, how data will be
+            used, odds of being selected, and other terms.
           </p>
         </div>
       </Container>
-
     </section>
   );
 };
