@@ -62,7 +62,7 @@ const CategoriesBarSlider = () => {
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   d="m14 7l-5 5l5 5"
                 />
               </svg>{" "}
@@ -79,7 +79,7 @@ const CategoriesBarSlider = () => {
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   d="m10 17l5-5l-5-5"
                 />
               </svg>

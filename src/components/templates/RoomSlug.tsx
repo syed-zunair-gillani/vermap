@@ -8,11 +8,13 @@ import GalleryForMobile from "../gallery/GalleryForMobile";
 import Image from "next/image";
 import Features from "../modules/room-slug/features";
 import MeetYourHost from "../meet-your-host/meet-your-host";
+import Guest from "../filters/guest";
 
 const RoomSlug = ({ data }: any) => {
   console.log("🚀 ~ RoomSlug ~ data: 111", data);
   const [roomType, setRoomType] = useState<string>("");
   const [typesData, setTypesData] = useState<any>(data?.acf?.room_types?.[0]);
+  const [openGuest, setOpenGuest] = useState(false)
 
   const handleRoomType = (type: string) => {
     setRoomType(type);
@@ -47,6 +49,7 @@ const RoomSlug = ({ data }: any) => {
           <GalleryForMobile data={data?.acf?.images_gallery} />
         </section>
       </Container>
+      
       <Container className="px-4 md:mt-7">
         <section className="flex">
           <div className="md:w-[60%]">
@@ -140,10 +143,9 @@ const RoomSlug = ({ data }: any) => {
               </ul>
             </section>
             <hr />
-            <MeetYourHost />
           </div>
-          <aside className="flex-1 ml-[95px] hidden md:block">
-            <div className="notifybadge">
+          <aside className="flex-1 ml-[95px] hidden md:block ">
+            <div className="notifybadge !sticky top-24">
               <h6 className="text-xl text-gray-600">
                 <strong className="text-2xl text-black">
                   ${typesData?.price_per_night}
@@ -161,11 +163,15 @@ const RoomSlug = ({ data }: any) => {
                     <p className="text-gray-600">11/3/2024</p>
                   </div>
                 </div>
-                <div>
-                  <div className="flex-1 p-2 px-3 border-t">
+                <div className="">
+                  <div className="flex-1 p-2 px-3 border-t cursor-pointer" onClick={()=>setOpenGuest(!openGuest)}>
                     <h6>Guest</h6>
                     <p className="text-gray-600">1 guest</p>
                   </div>
+                  {
+                    openGuest && <Guest setOpenGuest={setOpenGuest}/>
+                  }
+                  
                 </div>
               </div>
               <button className="bg-[#111] hover:bg-gray-900 w-full mt-5 text-white py-2.5 rounded-lg">
@@ -186,7 +192,7 @@ const RoomSlug = ({ data }: any) => {
               </div>
               <hr/>
               <div className="mt-4">
-              <p className=" flex mt-2 items-center gap-3 justify-between">
+                <p className=" flex mt-2 items-center gap-3 justify-between">
                   <span className="underline">Total before taxes</span>
                   <span>$502</span>
                 </p>
@@ -197,7 +203,6 @@ const RoomSlug = ({ data }: any) => {
       </Container>
 
       <Container>
-        <hr />
         <div className="py-10">
           <h3 className="sm:font-medium sm:text-lg md:text-2xl">
             Where you’ll be
@@ -222,62 +227,8 @@ const RoomSlug = ({ data }: any) => {
         </div>
       </Container>
 
-      <Container className="">
-        <hr />
-        <figure className="flex justify-center mt-8">
-          <Image src="/images/icons.png" width={600} height={300} alt="icons" />
-        </figure>
-        <div className=" max-w-[460px] mx-auto mb-16">
-          <h3 className="text-center font-extrabold text-2xl md:text-8xl">
-            icons
-          </h3>
-          <p className="mt-4 text-gray-600 text-center">
-            Extraordinary experiences hosted by the world’s greatest names in
-            music, film, TV, art, sports, and more.
-          </p>
-        </div>
-      </Container>
 
-      <Container className="">
-        <hr />
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 my-10">
-          <div className="">
-            <h3 className="font-medium">Request to book</h3>
-            <p className="text-gray-500 font-normal mt-1.5">
-              Choose your dates, add your guests, then answer a question about
-              why you want to go.
-            </p>
-          </div>
-          <div className="">
-            <h3 className="font-medium">Selection process</h3>
-            <p className="text-gray-500 font-normal mt-1.5">
-              First, we’ll randomly choose a set of potential guests. Next,
-              we’ll review their answers for unique perspectives and connections
-              to the icon. Then, we’ll invite selected guests to book.
-            </p>
-          </div>
-          <div className="">
-            <h3 className="font-medium">Requirements</h3>
-            <p className="text-gray-500 font-normal mt-1.5">
-              You’ll need an active Airbnb account and the app to participate,
-              and be a resident of an eligible country or region. It won’t cost
-              you anything to submit a request.
-            </p>
-          </div>
-        </section>
-      </Container>
-
-      <Container className="">
-        <hr />
-        <div className=" max-w-[560px] my-10">
-          <p className="mt-4 text-gray-600 text-sm font-light">
-            If you’re selected and decide to book, you’ll have 24 hours to
-            complete the purchase. Travel costs are not included. See the full
-            rules, including age and geographic eligibility, how data will be
-            used, odds of being selected, and other terms.
-          </p>
-        </div>
-      </Container>
+    
     </section>
   );
 };
