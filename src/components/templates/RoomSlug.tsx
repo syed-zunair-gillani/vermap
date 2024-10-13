@@ -130,7 +130,7 @@ const RoomSlug = ({ data }: any) => {
               <ul className="mt-4 grid gap-4 md:grid-cols-2">
                 {data?.acf?.room_policies?.map((item: any, id: number) => (
                   <li key={id} className="flex items-center gap-2">
-                    <img
+                    <Image
                       src={item.icon}
                       alt={item.policy}
                       width={30}
