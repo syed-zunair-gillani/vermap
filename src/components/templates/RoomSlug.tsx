@@ -11,10 +11,8 @@ import MeetYourHost from "../meet-your-host/meet-your-host";
 
 const RoomSlug = ({ data }: any) => {
   console.log("🚀 ~ RoomSlug ~ data: 111", data);
-  console.log("🚀 ~ RoomSlug ~ data:", data?.acf?.room_types?.[0]);
   const [roomType, setRoomType] = useState<string>("");
   const [typesData, setTypesData] = useState<any>(data?.acf?.room_types?.[0]);
-  console.log("🚀 ~ RoomSlug ~ typesData: 11", typesData);
 
   const handleRoomType = (type: string) => {
     setRoomType(type);
@@ -112,7 +110,7 @@ const RoomSlug = ({ data }: any) => {
                 {data?.acf?.room_amenities?.map((item: any, id: number) => (
                   <li key={id} className="flex items-center gap-2">
                     <Image
-                      src={item.icon}
+                      src={item?.icon}
                       alt={item.feature}
                       width={30}
                       height={30}
@@ -131,7 +129,7 @@ const RoomSlug = ({ data }: any) => {
                 {data?.acf?.room_policies?.map((item: any, id: number) => (
                   <li key={id} className="flex items-center gap-2">
                     <Image
-                      src={item.icon}
+                      src={item?.icon}
                       alt={item.policy}
                       width={30}
                       height={30}
