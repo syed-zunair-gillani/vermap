@@ -112,7 +112,7 @@ const RoomSlug = ({ data }: any) => {
                 {data?.acf?.room_amenities?.map((item: any, id: number) => (
                   <li key={id} className="flex items-center gap-2">
                     <Image
-                      src={`${item.icon}`}
+                      src={item.icon}
                       alt={item.feature}
                       width={30}
                       height={30}
