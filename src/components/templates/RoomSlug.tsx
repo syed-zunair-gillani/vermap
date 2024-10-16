@@ -56,9 +56,9 @@ const RoomSlug = ({ data }: any) => {
         </section>
       </Container>
 
-      <Container className="px-4 md:mt-7">
-        <section className="flex">
-          <div className="md:w-[60%]">
+      <Container className="md:mt-7">
+        <section className="md:flex">
+          <div className="w-full md:w-[60%]">
             <h3 className="sm:font-medium sm:text-lg md:text-2xl">
               {data?.acf?.location}
             </h3>
@@ -151,7 +151,8 @@ const RoomSlug = ({ data }: any) => {
             </section>
             <hr />
           </div>
-          <aside className="flex-1 ml-[95px] hidden md:block">
+          
+          <aside className="flex-1 pt-8 md:ml-[95px]">
             <div className="notifybadge !sticky top-24">
               <h6 className="text-xl text-gray-600">
                 <strong className="text-2xl text-black">
