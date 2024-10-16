@@ -26,7 +26,7 @@ const MainFilter = () => {
         className="py-2 px-5 md:pl-10 font-normal flex-1 text-[13px] text-gray-500 bg-white rounded-full hover:bg-gray-100"
       >
         <p className="text-black text-left">Where</p>
-        <p className="text-left hidden md:block">Search destinations</p>
+        <p className="text-left md:text-[13px] text-[10px]"><span className="hidden md:inline">Search</span> destinations</p>
       </button>
       <div className="pl-[1px] h-[30px] bg-gray-300" />
       <button
@@ -34,7 +34,7 @@ const MainFilter = () => {
         className="py-2 px-5 md:pl-10 font-normal flex-1 text-[13px] text-gray-500 bg-white rounded-full hover:bg-gray-100"
       >
         <p className="text-black text-left">Date</p>
-        <p className="text-left hidden md:block">Add dates</p>
+        <p className="text-left md:text-[13px] text-[10px]">Add dates</p>
       </button>
       <div className="pl-[1px] h-[30px] bg-gray-300" />
       <div
@@ -43,7 +43,7 @@ const MainFilter = () => {
       >
         <div>
           <p className="text-black text-left">Who</p>
-          <p className="text-left hidden md:block">Add guests</p>
+          <p className="text-left md:text-[13px] text-[10px]">Add guests</p>
         </div>
       </div>
       <button className="bg-[#111] text-white p-3 rounded-full">
