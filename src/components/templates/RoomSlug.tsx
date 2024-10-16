@@ -238,10 +238,7 @@ const RoomSlug = ({ data }: any) => {
             Neighborhood highlights
           </h3>
           <p className="mt-4 text-gray-600">
-            My Slumber Party Fun compact is in my adorable hometown of
-            Littleton, Massachusetts. It might not be the most urban of
-            settings, but that’s exactly why I love it. Plenty of room for
-            imagination, exploration, and adventure. You MUST come see it.
+            {data?.acf?.neighborhood_highlights}
           </p>
         </div>
       </Container>

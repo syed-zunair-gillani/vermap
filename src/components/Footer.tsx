@@ -76,7 +76,7 @@ const footerNav = [
     title: "Hosting",
     links: [
       {
-        label: "Airbnb your home",
+        label: "Vermap your home",
         href: "#",
       },
       {
@@ -96,7 +96,7 @@ const footerNav = [
         href: "#",
       },
       {
-        label: "Airbnb-friendly apartments",
+        label: "Vermap-friendly apartments",
         href: "#",
       },
       {
@@ -106,7 +106,7 @@ const footerNav = [
     ],
   },
   {
-    title: "Airbnb",
+    title: "Vermap",
     links: [
       {
         label: "Newsroom",

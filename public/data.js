@@ -554,7 +554,7 @@ export const listingItems = [
       ],
     },
     {
-      name: "Airbnb-friendly apartments",
+      name: "Vermap-friendly apartments",
       items: [
         {
           name: "Canmore",
