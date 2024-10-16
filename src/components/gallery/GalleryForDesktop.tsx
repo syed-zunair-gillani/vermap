@@ -19,7 +19,7 @@ const GalleryForDesktop = ({ data }: any) => {
           <div key={id}>
             <figure className="relative group cursor-pointer">
               <Image
-                src={item?.sizes?.medium}
+                src={item?.url}
                 width={800}
                 height={460}
                 alt="image"
@@ -39,7 +39,7 @@ const GalleryForDesktop = ({ data }: any) => {
           {data?.slice(1, 5)?.map((item: any, id: number) => (
             <figure className={`relative group cursor-pointer ${data?.length === 4 && id === 2 && "col-span-2"}`} key={id}>
               <Image
-                src={item?.sizes?.medium}
+                src={item?.url}
                 width={800}
                 height={460}
                 alt={item?.title || "image"}

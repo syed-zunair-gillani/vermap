@@ -16,7 +16,7 @@ const ItemCard = ({ data }: any) => {
             <figure key={idx} className="rounded-[14px] !overflow-hidden">
               <Link href={`/rooms/${data?.slug}`}>
               <Image
-                src={item?.sizes?.medium}
+                src={item?.url}
                 alt={data?.title}
                 width={285}
                 height={285}

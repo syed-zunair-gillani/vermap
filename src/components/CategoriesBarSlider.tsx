@@ -11,12 +11,9 @@ const CategoriesBarSlider = () => {
   const slider = React.useRef<any>(null);
   const { setCategory, setListing, listing, category } =
     useContext(GlobalContext);
-  const [items, setItems] = useState(listing);
   const router = useRouter();
 
   const handleListingCategory = (slug: any) => {
-    const filterListing = items?.filter((item: any) => item.category === slug);
-    setListing(filterListing);
     setCategory(slug);
     router.push(`?category=${slug}`);
   };

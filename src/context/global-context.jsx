@@ -9,6 +9,14 @@ export const GlobalProvider = ({ children }) => {
   const [category, setCategory] = useState("")
   const [listing, setListing] = useState(listingItems)
 
+   // Guest Meta 
+   const [adults, setAdults] = useState(0);
+   const [childrens, setChildrens] = useState(0);
+   const [infants, setInfants] = useState(0);
+   const [pets, setPets] = useState(0);
+   const totalGuest = adults + childrens + infants + pets;
+
+
   // Calander 
   const [selectionRange, setSelectionRange] = useState({
     startDate: new Date(),
@@ -28,6 +36,7 @@ export const GlobalProvider = ({ children }) => {
     return totalNights > 0 ? totalNights : 0; // Ensure nights is not negative
   };
 
+  
 
   return (
     <GlobalContext.Provider
@@ -36,7 +45,8 @@ export const GlobalProvider = ({ children }) => {
         category, setCategory,
         listing, setListing,
         selectionRange, handleSelect,
-        totalNights: getTotalNights(), 
+        totalNights: getTotalNights(),
+        adults, setAdults, childrens, setChildrens, infants, setInfants, pets, setPets, totalGuest
       }}
     >
       {children}

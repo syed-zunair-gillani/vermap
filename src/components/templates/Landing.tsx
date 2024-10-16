@@ -12,7 +12,6 @@ import Link from "next/link";
 
 const Landing = ({data}:any) => {
   const [activeInspiration, setActiveInspiration] = useState<any>(features[0]);
-  const { listing } = useContext(GlobalContext);
 
   return (
     <>

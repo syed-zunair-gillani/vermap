@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import { GlobalContext } from "@/context/global-context";
+import React, { useContext, useState } from "react";
 
-const Guest = ({setOpenGuest}:any) => {
+const Guest = ({setOpenGuest, dbGest}:any) => {
   // State for guest counts
-  const [adults, setAdults] = useState(0);
-  const [children, setChildren] = useState(0);
-  const [infants, setInfants] = useState(0);
-  const [pets, setPets] = useState(0);
-
+  
+  const {
+    adults, setAdults, childrens, setChildrens, infants, setInfants, pets, setPets, totalGuest
+  } = useContext(GlobalContext)
+  
   // Handlers for incrementing and decrementing
   const increment = (setCount:any, count:any) => setCount(count + 1);
   const decrement = (setCount:any, count:any) => {
     if (count > 0) setCount(count - 1); // Prevent negative numbers
   };
+
 
   return (
     <div className="absolute max-w-[304px] rounded-lg flex flex-col gap-5 notifybadge !pb-5 z-10 bg-white w-full p-3">
@@ -34,8 +36,9 @@ const Guest = ({setOpenGuest}:any) => {
           </button>
           <p className="text-lg text-gray-700 font-light">{adults}</p>
           <button
-            className="border p-2 rounded-full"
+            className={`border p-2 rounded-full`}
             onClick={() => increment(setAdults, adults)}
+            disabled={totalGuest === +dbGest ? true : false}
           >
             <svg
               width="12px"
@@ -78,18 +81,19 @@ const Guest = ({setOpenGuest}:any) => {
         <div className="flex items-center gap-3">
           <button
             className="border p-2 rounded-full"
-            onClick={() => decrement(setChildren, children)}
-            disabled={children === 0}
+            onClick={() => decrement(setChildrens, childrens)}
+            disabled={childrens === 0}
           >
             <svg width="15px" height="15px" viewBox="0 0 24 24">
               <path d="M23 13H1v-2h22z" />
               <path fill="none" d="M0 0h24v24H0z" />
             </svg>
           </button>
-          <p className="text-lg text-gray-700 font-light">{children}</p>
+          <p className="text-lg text-gray-700 font-light">{childrens}</p>
           <button
             className="border p-2 rounded-full"
-            onClick={() => increment(setChildren, children)}
+            onClick={() => increment(setChildrens, childrens)}
+            disabled={totalGuest === +dbGest ? true : false}
           >
             <svg
               width="12px"
@@ -144,6 +148,7 @@ const Guest = ({setOpenGuest}:any) => {
           <button
             className="border p-2 rounded-full"
             onClick={() => increment(setInfants, infants)}
+            disabled={totalGuest === +dbGest ? true : false}
           >
             <svg
               width="12px"
@@ -198,6 +203,7 @@ const Guest = ({setOpenGuest}:any) => {
           <button
             className="border p-2 rounded-full"
             onClick={() => increment(setPets, pets)}
+            disabled={totalGuest === +dbGest ? true : false}
           >
             <svg
               width="12px"

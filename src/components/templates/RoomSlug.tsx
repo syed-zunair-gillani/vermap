@@ -18,7 +18,7 @@ const RoomSlug = ({ data }: any) => {
   const [typesData, setTypesData] = useState<any>(data?.acf?.room_types?.[0]);
   const [openGuest, setOpenGuest] = useState(false);
   const [openCalendar, setOpenCalendar] = useState(false);
-  const { selectionRange, totalNights } = useContext(GlobalContext);
+  const { selectionRange, totalNights, totalGuest } = useContext(GlobalContext);
   const servicesFee = 62
 
   const handleRoomType = (type: string) => {
@@ -188,9 +188,9 @@ const RoomSlug = ({ data }: any) => {
                     onClick={() => setOpenGuest(!openGuest)}
                   >
                     <h6>Guest</h6>
-                    <p className="text-gray-600">1 guest</p>
+                    <p className="text-gray-600">{totalGuest || 0} guest</p>
                   </div>
-                  {openGuest && <Guest setOpenGuest={setOpenGuest} />}
+                  {openGuest && <Guest setOpenGuest={setOpenGuest} dbGest={typesData?.total_guests}/>}
                 </div>
               </section>
 

@@ -10,7 +10,7 @@ const GalleryForMobile = ({data}:any) => {
         {data?.map((url:any, idx:number) => (
           <figure className="relative group cursor-pointer" key={idx}>
             <Image
-              src={url?.sizes?.medium}
+              src={url?.url}
               width={800}
               height={320}
               alt="image"

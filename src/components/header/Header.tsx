@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,18 +9,24 @@ import { IconButton } from "@mui/material";
 import Container from "../ui/container";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
-import MainFilter from "./MainFilter";
 import MobileNav from "./MobileNav";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const router = useRouter()
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(()=>{
+    router.push("/?category=hotels")
+  })
 
   return (
     <header className="border-b-[1px] sticky w-full top-0 z-[10000] bg-white">

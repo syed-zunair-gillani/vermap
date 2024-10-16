@@ -52,7 +52,7 @@ export default function GModelBox({ data }: any) {
             {data?.map((item: any, idx: number) => (
               <figure key={idx}>
                 <Image
-                  src={item?.sizes?.medium}
+                  src={item?.url}
                   alt={item}
                   width={600}
                   height={800}
