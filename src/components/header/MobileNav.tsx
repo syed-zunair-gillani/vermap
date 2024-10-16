@@ -19,12 +19,12 @@ const MobileNav = () => {
         />
       </div>
       <nav
-        className={`absolute p-4 bg-black z-[1] w-full left-0 transition-all duration-200 text-white flex flex-col ${openNav ?  'top-16' : 'top-[-500%]'}`}
+        className={`absolute p-4 bg-[#111]/95 z-[1] w-full left-0 transition-all duration-200 text-white flex flex-col ${openNav ?  'top-16' : 'top-[-500%]'}`}
       >
-        <Link href="/" className="py-4 border-b-[2px] border-gray-700">
+        <Link href="/" className="py-4 border-b-[2px] border-gray-300/10">
           Home
         </Link>
-        <Link href="/" className="py-4 border-b-[2px] border-gray-700">
+        <Link href="/" className="py-4 border-b-[2px] border-gray-300/10">
           Blogs
         </Link>
         <Link href="/" className="py-4">

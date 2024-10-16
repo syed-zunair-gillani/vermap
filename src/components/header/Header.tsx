@@ -10,12 +10,13 @@ import Container from "../ui/container";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MobileNav from "./MobileNav";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter()
+  const pathName = usePathname()
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -25,7 +26,8 @@ const Header = () => {
   };
 
   useEffect(()=>{
-    router.push("/?category=hotels")
+    pathName === "/" && router.push("/?category=hotels")
+    
   })
 
   return (

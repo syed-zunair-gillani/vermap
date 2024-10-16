@@ -73,7 +73,7 @@ const RoomSlug = ({ data }: any) => {
                 <button
                   key={id}
                   onClick={() => handleRoomType(item?.type)}
-                  className={`p-3 px-8 hover:bg-black hover:!text-white ${
+                  className={`md:p-3 p-2 px-5 md:px-8 hover:bg-black hover:!text-white ${
                     (roomType || typesData.type) === item?.type &&
                     "bg-black text-white"
                   } ${
@@ -149,10 +149,12 @@ const RoomSlug = ({ data }: any) => {
                 ))}
               </ul>
             </section>
-            <hr />
+            <div className="hidden md:block">
+              <hr />
+            </div>
           </div>
           
-          <aside className="flex-1 pt-8 md:ml-[95px]">
+          <aside className="flex-1 pt-4 md:ml-[95px]">
             <div className="notifybadge !sticky top-24">
               <h6 className="text-xl text-gray-600">
                 <strong className="text-2xl text-black">
