@@ -10,23 +10,35 @@ import Container from "../ui/container";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MobileNav from "./MobileNav";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter()
   const pathName = usePathname()
+  const params = useSearchParams()
+  const category = params.get('category')
+ 
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
+  }; 
 
   useEffect(()=>{
-    pathName === "/" && router.push("/?category=hotels")
+    if(pathName === "/"){
+      router.push(`/?category=hotels`)
+      if(category === "hotels"){
+        router.push(`/?category=hotels`)
+      }else if(category !== "null"){
+        router.push(`/?category=${category}`)
+      }
+    }
+    
+    
     
   })
 
