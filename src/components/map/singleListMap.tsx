@@ -28,7 +28,7 @@ const SingleListMap = ({ data }: any) => {
       style={{ height: "50vh", width: "100%" }}
       scrollWheelZoom={false} // Enable zooming with the scroll wheel
       doubleClickZoom={true} // Enable zooming with double click
-      dragging={true} // Enable dragging
+      dragging={false} // Enable dragging
       zoomControl={false} // Disable default zoom control
     >
       <TileLayer
