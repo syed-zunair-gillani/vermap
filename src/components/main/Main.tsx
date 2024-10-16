@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <main className="relative">
       <MapComponent />
-      <div className="absolute bottom-14 z-[1000] w-full ">
+      <div className="absolute bottom-[70px] z-[1000] w-full ">
         <MainFilter />
       </div>
     </main>
