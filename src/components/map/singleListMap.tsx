@@ -1,52 +1,50 @@
-"use client"
-import React from 'react'
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon } from "leaflet";
+"use client";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  ZoomControl,
+} from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
+// Fix leaflet's default icon issue with React
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+});
 
-const SingleListMap = () => {
-
-  const customIcon = new Icon({
-    iconUrl: "/images/hotel.png",
-    iconSize: [38, 38]
-  })
+const SingleListMap = ({ data }: any) => {
+  const position: any = [51.505, -0.09]; // Default center position
 
   return (
-    <>
-    <section className="h-[80vh] relative">
-      <MapContainer
-        center={[13.7563, 100.5018]}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution=''
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-        />
-        {cooardinates.map((pin:any, idx:number) => (
-          <Marker position={pin.geoCode} key={idx} icon={customIcon}>
-            <Popup>
-              {pin.popup}
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </section>
-    </>
-  )
-}
+    <MapContainer
+      center={position}
+      zoom={13}
+      style={{ height: "50vh", width: "100%" }}
+      scrollWheelZoom={false} // Enable zooming with the scroll wheel
+      doubleClickZoom={true} // Enable zooming with double click
+      dragging={true} // Enable dragging
+      zoomControl={false} // Disable default zoom control
+    >
+      <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        attribution=""
+      />
 
-export default SingleListMap
+      <Marker position={position}>
+        <Popup>
+          <strong>{data?.title?.rendered}</strong>
+          <p className="!mt-1">{data?.acf?.room_types?.[0]?.description}</p>
+        </Popup>
+      </Marker>
+      {/* <ZoomControl position="bottomright" /> */}
+    </MapContainer>
+  );
+};
 
-
-const cooardinates = [
-    {
-      geoCode: [13.7563, 100.5018],
-      popup: "popup data 1"
-    },
-    {
-      geoCode: [13.86250, 100.51444],
-      popup: "popup data 2"
-    }
-  
-  ]
+export default SingleListMap;

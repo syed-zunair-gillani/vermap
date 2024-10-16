@@ -10,6 +10,7 @@ import Features from "../modules/room-slug/features";
 import Guest from "../filters/guest";
 import DateRangeCalander from "../filters/date-range";
 import { GlobalContext } from "@/context/global-context";
+import SingleListMap from "../map/singleListMap";
 
 
 const RoomSlug = ({ data }: any) => {
@@ -230,7 +231,8 @@ const RoomSlug = ({ data }: any) => {
           <h3 className="sm:font-medium sm:text-lg md:text-2xl">
             Where you’ll be
           </h3>
-          <p className="mt-4 text-gray-600">{data?.acf?.location}</p>
+          <p className="mt-4 text-gray-600 mb-6">{data?.acf?.location}</p>
+          <SingleListMap data={data}/>
         </div>
         {/* <SingleListMap/> */}
       </Container>
