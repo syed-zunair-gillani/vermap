@@ -164,8 +164,8 @@ const RoomSlug = ({ data }: any) => {
                 night
               </h6>
 
-              <section className="border text-sm rounded-lg overflow-hidden mt-4">
-                <div className="">
+              <section className="border text-sm rounded-lg mt-4">
+                <div className="relative">
                   <div
                     id="calander"
                     className="flex cursor-pointer"

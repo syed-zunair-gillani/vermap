@@ -16,7 +16,7 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
 
 
   return (
-    <div className="absolute max-w-[304px] rounded-lg flex flex-col gap-5 notifybadge !pb-5 z-10 bg-white w-full p-3">
+    <div className="absolute rounded-lg flex flex-col gap-5 notifybadge !pb-5 z-10 bg-white w-auto mr-[22px] p-3">
       {/* Adults */}
       <div className="flex justify-between">
         <div>

@@ -9,7 +9,7 @@ const DateRangeCalander = () => {
   const { selectionRange, handleSelect } = useContext(GlobalContext);
 
   return (
-    <section className="absolute max-w-[304px] rounded-lg flex flex-col gap-5 notifybadge !pb-0 z-10 bg-white w-full !p-3">
+    <section className="absolute rounded-lg flex flex-col gap-5 notifybadge !pb-0 z-10 bg-white w-full !p-3">
       <DateRange
         ranges={[selectionRange]}
         onChange={handleSelect}
