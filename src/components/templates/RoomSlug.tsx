@@ -18,7 +18,8 @@ const RoomSlug = ({ data }: any) => {
   const [typesData, setTypesData] = useState<any>(data?.acf?.room_types?.[0]);
   const [openGuest, setOpenGuest] = useState(false);
   const [openCalendar, setOpenCalendar] = useState(false);
-  const { selectionRange } = useContext(GlobalContext);
+  const { selectionRange, totalNights } = useContext(GlobalContext);
+  const servicesFee = 62
 
   const handleRoomType = (type: string) => {
     setRoomType(type);
@@ -201,19 +202,19 @@ const RoomSlug = ({ data }: any) => {
               </p>
               <div className="mt-5 font-light mb-5">
                 <p className="text-gray-600 flex items-center gap-3 justify-between">
-                  <span className="underline">$220 x 2 nights</span>
-                  <span>$440</span>
+                  <span className="underline">${typesData?.price_per_night} x {totalNights} nights</span>
+                  <span>${(typesData?.price_per_night * totalNights).toFixed(2) || 0}</span>
                 </p>
                 <p className="text-gray-600 flex mt-2 items-center gap-3 justify-between">
                   <span className="underline">Service fee</span>
-                  <span>$62</span>
+                  <span>${servicesFee}</span>
                 </p>
               </div>
               <hr />
               <div className="mt-4">
                 <p className="flex mt-2 items-center gap-3 justify-between">
                   <span className="underline">Total before taxes</span>
-                  <span>$502</span>
+                  <span>${((typesData?.price_per_night * totalNights) + servicesFee).toFixed(2)}</span>
                 </p>
               </div>
             </div>
