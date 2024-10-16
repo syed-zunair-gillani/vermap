@@ -8,6 +8,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
 import { GlobalProvider } from "@/context/global-context";
+import { Suspense } from "react";
 
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalProvider>
-        <Header/>
+        <Suspense fallback={<></>}><Header/></Suspense>
         {children}
         <Footer/>
         </GlobalProvider>
