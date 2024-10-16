@@ -20,7 +20,7 @@ const ItemCard = ({ data }: any) => {
                 alt={data?.title}
                 width={285}
                 height={285}
-                className="h-[160px] sm:h-[285px] lg:h-[310px] object-cover w-full"
+                className="h-[180px] sm:h-[285px] lg:h-[310px] object-cover w-full"
               />
               </Link>
             </figure>
