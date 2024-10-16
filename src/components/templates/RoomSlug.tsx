@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Container from "../ui/container";
 import { Iheart, Ishare } from "@/const";
 import { Button } from "@mui/material";
@@ -7,14 +7,18 @@ import GalleryForDesktop from "../gallery/GalleryForDesktop";
 import GalleryForMobile from "../gallery/GalleryForMobile";
 import Image from "next/image";
 import Features from "../modules/room-slug/features";
-import MeetYourHost from "../meet-your-host/meet-your-host";
 import Guest from "../filters/guest";
+import DateRangeCalander from "../filters/date-range";
+import { GlobalContext } from "@/context/global-context";
+
 
 const RoomSlug = ({ data }: any) => {
   console.log("🚀 ~ RoomSlug ~ data: 111", data);
   const [roomType, setRoomType] = useState<string>("");
   const [typesData, setTypesData] = useState<any>(data?.acf?.room_types?.[0]);
-  const [openGuest, setOpenGuest] = useState(false)
+  const [openGuest, setOpenGuest] = useState(false);
+  const [openCalendar, setOpenCalendar] = useState(false);
+  const { selectionRange } = useContext(GlobalContext);
 
   const handleRoomType = (type: string) => {
     setRoomType(type);
@@ -22,6 +26,7 @@ const RoomSlug = ({ data }: any) => {
       data?.acf?.room_types?.find((item: any) => item.type === type) || {};
     setTypesData(res);
   };
+  
 
   return (
     <section className="max-w-[1280px] mx-auto">
@@ -49,7 +54,7 @@ const RoomSlug = ({ data }: any) => {
           <GalleryForMobile data={data?.acf?.images_gallery} />
         </section>
       </Container>
-      
+
       <Container className="px-4 md:mt-7">
         <section className="flex">
           <div className="md:w-[60%]">
@@ -144,7 +149,7 @@ const RoomSlug = ({ data }: any) => {
             </section>
             <hr />
           </div>
-          <aside className="flex-1 ml-[95px] hidden md:block ">
+          <aside className="flex-1 ml-[95px] hidden md:block">
             <div className="notifybadge !sticky top-24">
               <h6 className="text-xl text-gray-600">
                 <strong className="text-2xl text-black">
@@ -152,28 +157,41 @@ const RoomSlug = ({ data }: any) => {
                 </strong>{" "}
                 night
               </h6>
-              <div className="border text-sm rounded-lg overflow-hidden mt-4">
-                <div className="flex">
-                  <div className="flex-1 p-2 px-3 border-r">
-                    <h6>Check-in</h6>
-                    <p className="text-gray-600">11/3/2024</p>
-                  </div>
-                  <div className="flex-1 p-2 px-3">
-                    <h6>Check-out</h6>
-                    <p className="text-gray-600">11/3/2024</p>
-                  </div>
-                </div>
+
+              <section className="border text-sm rounded-lg overflow-hidden mt-4">
                 <div className="">
-                  <div className="flex-1 p-2 px-3 border-t cursor-pointer" onClick={()=>setOpenGuest(!openGuest)}>
+                  <div
+                    id="calander"
+                    className="flex cursor-pointer"
+                    onClick={() => setOpenCalendar(!openCalendar)}
+                  >
+                    <div className="flex-1 p-2 px-3 border-r">
+                      <h6>Check-in</h6>
+                      <p className="text-gray-600">
+                        {selectionRange.startDate.toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div className="flex-1 p-2 px-3">
+                      <h6>Check-out</h6>
+                      <p className="text-gray-600">
+                        {selectionRange.endDate.toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                  {openCalendar && <DateRangeCalander />}
+                </div>
+                <div className="border-t">
+                  <div
+                    className="flex-1 p-2 px-3 cursor-pointer"
+                    onClick={() => setOpenGuest(!openGuest)}
+                  >
                     <h6>Guest</h6>
                     <p className="text-gray-600">1 guest</p>
                   </div>
-                  {
-                    openGuest && <Guest setOpenGuest={setOpenGuest}/>
-                  }
-                  
+                  {openGuest && <Guest setOpenGuest={setOpenGuest} />}
                 </div>
-              </div>
+              </section>
+
               <button className="bg-[#111] hover:bg-gray-900 w-full mt-5 text-white py-2.5 rounded-lg">
                 Reserve
               </button>
@@ -186,13 +204,13 @@ const RoomSlug = ({ data }: any) => {
                   <span>$440</span>
                 </p>
                 <p className="text-gray-600 flex mt-2 items-center gap-3 justify-between">
-                  <span className="underline">Vermap service fee</span>
+                  <span className="underline">Service fee</span>
                   <span>$62</span>
                 </p>
               </div>
-              <hr/>
+              <hr />
               <div className="mt-4">
-                <p className=" flex mt-2 items-center gap-3 justify-between">
+                <p className="flex mt-2 items-center gap-3 justify-between">
                   <span className="underline">Total before taxes</span>
                   <span>$502</span>
                 </p>
@@ -226,9 +244,6 @@ const RoomSlug = ({ data }: any) => {
           </p>
         </div>
       </Container>
-
-
-    
     </section>
   );
 };

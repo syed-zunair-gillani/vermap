@@ -9,12 +9,23 @@ export const GlobalProvider = ({ children }) => {
   const [category, setCategory] = useState("")
   const [listing, setListing] = useState(listingItems)
 
+  // Calander 
+  const [selectionRange, setSelectionRange] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection',
+  });
+  const handleSelect = (ranges) => {
+    setSelectionRange(ranges.selection);
+  };
+
   return (
     <GlobalContext.Provider
       value={{
         openGalleryModel, seOpenGalleryModel,
         category, setCategory,
-        listing, setListing
+        listing, setListing,
+        selectionRange, handleSelect
       }}
     >
       {children}

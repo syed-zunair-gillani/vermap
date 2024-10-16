@@ -64,3 +64,7 @@ html {
     border: 1px solid rgba(0, 0, 0, 0.02);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
+
+.rdrMonth{
+    width: 100% !important;
+}
