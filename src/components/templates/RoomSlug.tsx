@@ -213,7 +213,7 @@ const RoomSlug = ({ data }: any) => {
               <hr />
               <div className="mt-4">
                 <p className="flex mt-2 items-center gap-3 justify-between">
-                  <span className="underline">Total before taxes</span>
+                  <span className="">Total before taxes</span>
                   <span>${((typesData?.price_per_night * totalNights) + servicesFee).toFixed(2)}</span>
                 </p>
               </div>
