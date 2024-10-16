@@ -124,7 +124,6 @@ const RoomSlug = ({ data }: any) => {
                       height={30}
                     />
                     <span>{item?.feature}</span>
-                    icon: {item?.icon}
                   </li>
                 ))}
                 
