@@ -1,22 +1,31 @@
 import { GlobalContext } from "@/context/global-context";
 import React, { useContext, useState } from "react";
 
-const Guest = ({setOpenGuest, dbGest}:any) => {
-  // State for guest counts
-  
+const Guest = ({ setOpenGuest, dbGest, className }: any) => {
+  // Context for guest counts
   const {
-    adults, setAdults, childrens, setChildrens, infants, setInfants, pets, setPets, totalGuest
-  } = useContext(GlobalContext)
-  
+    adults,
+    setAdults,
+    childrens,
+    setChildrens,
+    infants,
+    setInfants,
+    pets,
+    setPets,
+    totalGuest,
+  } = useContext(GlobalContext);
+
   // Handlers for incrementing and decrementing
-  const increment = (setCount:any, count:any) => setCount(count + 1);
-  const decrement = (setCount:any, count:any) => {
+  const increment = (setCount: any, count: any) => setCount(count + 1);
+  const decrement = (setCount: any, count: any) => {
     if (count > 0) setCount(count - 1); // Prevent negative numbers
   };
 
+  // Calculate total guests without infants and pets
+  const totalWithoutInfantsAndPets = adults + childrens;
 
   return (
-    <div className="absolute rounded-lg flex flex-col gap-5 notifybadge !pb-5 z-10 bg-white w-auto mr-[22px] p-3">
+    <div className={`absolute rounded-lg flex flex-col gap-5 notifybadge !pb-5 z-10 bg-white w-auto mr-[22px] p-3 ${className}`}>
       {/* Adults */}
       <div className="flex justify-between">
         <div>
@@ -36,34 +45,16 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
           </button>
           <p className="text-lg text-gray-700 font-light">{adults}</p>
           <button
-            className={`border p-2 rounded-full`}
+            className="border p-2 rounded-full"
             onClick={() => increment(setAdults, adults)}
-            disabled={totalGuest === +dbGest ? true : false}
+            disabled={totalWithoutInfantsAndPets === +dbGest ? true : false}
           >
-            <svg
-              width="12px"
-              height="12px"
-              viewBox="0 -0.5 21 21"
-              version="1.1"
-            >
+            <svg width="12px" height="12px" viewBox="0 -0.5 21 21" version="1.1">
               <defs></defs>
-              <g
-                id="Page-1"
-                stroke="none"
-                stroke-width="1"
-                fill="none"
-                fill-rule="evenodd"
-              >
-                <g
-                  id="Dribbble-Light-Preview"
-                  transform="translate(-379.000000, -240.000000)"
-                  fill="#000000"
-                >
+              <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-379.000000, -240.000000)" fill="#000000">
                   <g id="icons" transform="translate(56.000000, 160.000000)">
-                    <polygon
-                      id="plus-[#1512]"
-                      points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"
-                    ></polygon>
+                    <polygon id="plus-[#1512]" points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"></polygon>
                   </g>
                 </g>
               </g>
@@ -93,32 +84,14 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
           <button
             className="border p-2 rounded-full"
             onClick={() => increment(setChildrens, childrens)}
-            disabled={totalGuest === +dbGest ? true : false}
+            disabled={totalWithoutInfantsAndPets === +dbGest ? true : false}
           >
-            <svg
-              width="12px"
-              height="12px"
-              viewBox="0 -0.5 21 21"
-              version="1.1"
-            >
+            <svg width="12px" height="12px" viewBox="0 -0.5 21 21" version="1.1">
               <defs></defs>
-              <g
-                id="Page-1"
-                stroke="none"
-                stroke-width="1"
-                fill="none"
-                fill-rule="evenodd"
-              >
-                <g
-                  id="Dribbble-Light-Preview"
-                  transform="translate(-379.000000, -240.000000)"
-                  fill="#000000"
-                >
+              <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-379.000000, -240.000000)" fill="#000000">
                   <g id="icons" transform="translate(56.000000, 160.000000)">
-                    <polygon
-                      id="plus-[#1512]"
-                      points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"
-                    ></polygon>
+                    <polygon id="plus-[#1512]" points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"></polygon>
                   </g>
                 </g>
               </g>
@@ -127,7 +100,7 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
         </div>
       </div>
 
-      {/* Infants */}
+      {/* Infants (not included in totalGuest limit) */}
       <div className="flex justify-between">
         <div>
           <p className="font-medium text-[17px]">Infants</p>
@@ -148,32 +121,13 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
           <button
             className="border p-2 rounded-full"
             onClick={() => increment(setInfants, infants)}
-            disabled={totalGuest === +dbGest ? true : false}
           >
-            <svg
-              width="12px"
-              height="12px"
-              viewBox="0 -0.5 21 21"
-              version="1.1"
-            >
+            <svg width="12px" height="12px" viewBox="0 -0.5 21 21" version="1.1">
               <defs></defs>
-              <g
-                id="Page-1"
-                stroke="none"
-                stroke-width="1"
-                fill="none"
-                fill-rule="evenodd"
-              >
-                <g
-                  id="Dribbble-Light-Preview"
-                  transform="translate(-379.000000, -240.000000)"
-                  fill="#000000"
-                >
+              <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-379.000000, -240.000000)" fill="#000000">
                   <g id="icons" transform="translate(56.000000, 160.000000)">
-                    <polygon
-                      id="plus-[#1512]"
-                      points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"
-                    ></polygon>
+                    <polygon id="plus-[#1512]" points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"></polygon>
                   </g>
                 </g>
               </g>
@@ -182,7 +136,7 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
         </div>
       </div>
 
-      {/* Pets */}
+      {/* Pets (not included in totalGuest limit) */}
       <div className="flex justify-between">
         <div>
           <p className="font-medium text-[17px]">Pets</p>
@@ -203,47 +157,19 @@ const Guest = ({setOpenGuest, dbGest}:any) => {
           <button
             className="border p-2 rounded-full"
             onClick={() => increment(setPets, pets)}
-            disabled={totalGuest === +dbGest ? true : false}
           >
-            <svg
-              width="12px"
-              height="12px"
-              viewBox="0 -0.5 21 21"
-              version="1.1"
-            >
+            <svg width="12px" height="12px" viewBox="0 -0.5 21 21" version="1.1">
               <defs></defs>
-              <g
-                id="Page-1"
-                stroke="none"
-                stroke-width="1"
-                fill="none"
-                fill-rule="evenodd"
-              >
-                <g
-                  id="Dribbble-Light-Preview"
-                  transform="translate(-379.000000, -240.000000)"
-                  fill="#000000"
-                >
+              <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-379.000000, -240.000000)" fill="#000000">
                   <g id="icons" transform="translate(56.000000, 160.000000)">
-                    <polygon
-                      id="plus-[#1512]"
-                      points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"
-                    ></polygon>
+                    <polygon id="plus-[#1512]" points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"></polygon>
                   </g>
                 </g>
               </g>
             </svg>
           </button>
         </div>
-      </div>
-
-      <p className="text-[12px]">
-        This place has a maximum of 6 guests, not including infants. If you're
-        bringing more than 2 pets, please let your host know.
-      </p>
-
-      <div className="flex justify-end">
-        <button onClick={()=>setOpenGuest(false)}>Close</button>
       </div>
     </div>
   );

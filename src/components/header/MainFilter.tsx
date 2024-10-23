@@ -1,10 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import DateRangeCalander from "../filters/date-range";
+import Guest from "../filters/guest";
+import { GlobalContext } from "@/context/global-context";
 
 const MainFilter = () => {
   const [openDestination, setOpenDestination] = useState(false);
   const [openDate, setOpenDate] = useState(false);
   const [openGuest, setOpenGuest] = useState(false);
+  const { selectionRange, totalNights, totalGuest,
+    adults, childrens, infants, pets,
+   } = useContext(GlobalContext);
 
   const handleMainFilter = (type: any) => {
     if (type === "destinations") {
@@ -12,15 +18,17 @@ const MainFilter = () => {
     }
     if (type === "dates") {
       setOpenDate(!openDate);
+      setOpenGuest(false);
     }
     if (type === "guests") {
       setOpenGuest(!openGuest);
+      setOpenDate(false);
     }
   };
 
   return (
    <section className="px-2">
-     <div className="border bg-white max-w-[750px] mx-auto w-full mt-3 flex rounded-full items-center shadow-lg overflow-hidden">
+     <div className="border relative bg-white max-w-[750px] mx-auto w-full mt-3 flex rounded-full items-center shadow-lg">
       <button
         onClick={() => handleMainFilter("destinations")}
         className="py-2 px-5 md:pl-10 font-normal flex-1 text-[13px] text-gray-500 bg-white rounded-full hover:bg-gray-100"
@@ -34,7 +42,13 @@ const MainFilter = () => {
         className="py-2 px-5 md:pl-10 font-normal flex-1 text-[13px] text-gray-500 bg-white rounded-full hover:bg-gray-100"
       >
         <p className="text-black text-left">Date</p>
-        <p className="text-left md:text-[13px] text-[10px]">Add dates</p>
+        <p className="text-left sm:hidden md:text-[13px] text-[10px]">
+          {"Add dates"}
+        </p>
+        <p className="text-left hidden sm:block md:text-[13px] text-[10px]">
+          {selectionRange.startDate.toLocaleDateString() !== selectionRange.endDate.toLocaleDateString() ? 
+          `${selectionRange.startDate.toLocaleDateString()} - ${selectionRange.endDate.toLocaleDateString()}` : "Add dates"}
+        </p>
       </button>
       <div className="pl-[1px] h-[30px] bg-gray-300" />
       <div
@@ -42,8 +56,9 @@ const MainFilter = () => {
         className="py-2 px-2 md:pl-10 font-normal items-center flex justify-between flex-1 text-[13px] text-gray-500 bg-white rounded-full hover:bg-gray-100"
       >
         <div>
-          <p className="text-black text-left">Who</p>
-          <p className="text-left md:text-[13px] text-[10px]">Add guests</p>
+          <p className="text-black cursor-pointer text-left">Who</p>
+          <p className="text-left cursor-pointer md:text-[13px] text-[10px] hidden sm:block">{ totalGuest ? `Adults: ${adults}, childrens: ${childrens}` : "Add guests"}</p> 
+          <p className="text-left cursor-pointer md:text-[13px] sm:hidden text-[10px]">{"Add guests"}</p>
         </div>
       </div>
       <button className="bg-[#111] text-white p-3 rounded-full">
@@ -56,6 +71,8 @@ const MainFilter = () => {
           />
         </svg>
       </button>
+      {openDate && <DateRangeCalander className="left-0 top-[58px] w-full sm:!left-1/2 sm:-translate-x-1/2 sm:!w-[50%]"/>}
+      {openGuest && <Guest setOpenGuest={setOpenGuest} dbGest={10} className="!right-0 left-0 left-unset top-[58px] w-full sm:!w-[60%] md:!w-[45%]"/>}
     </div>
    </section>
   );

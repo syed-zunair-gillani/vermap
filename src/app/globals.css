@@ -74,7 +74,13 @@ html {
         height: 50vh !important;
     }
 }
+@media (min-width: 640px){
+    .left-unset{
+        left: unset !important;
+    }
+}
 
 .leaflet-bar, .leaflet-control{
     display: none !important;
 }
+
