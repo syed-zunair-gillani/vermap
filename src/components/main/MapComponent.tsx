@@ -137,7 +137,6 @@ const MapComponent = () => {
                     onClick={handleClickOpen}
                   >
                     <BiSolidLike size={16} />
-                    <span>Like</span>
                   </button>
                   <button
                     className="flex items-center gap-1 text-gray-600 hover:text-black"
