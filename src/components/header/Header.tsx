@@ -34,13 +34,10 @@ const Header = () => {
       if(category === "hotels"){
         router.push(`/?category=hotels`)
       }else if(category !== "null"){
-        router.push(`/?category=${category}`)
+        router.push(`/?category=hotels`)
       }
     }
-    
-    
-    
-  })
+  },[])
 
   return (
     <header className="border-b-[1px] sticky w-full top-0 z-[10000] bg-white">

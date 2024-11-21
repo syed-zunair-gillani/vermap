@@ -3,28 +3,44 @@ import React, { useContext, useState } from "react";
 import DateRangeCalander from "../filters/date-range";
 import Guest from "../filters/guest";
 import { GlobalContext } from "@/context/global-context";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Destination from "../filters/destination";
 
 const MainFilter = () => {
   const [openDestination, setOpenDestination] = useState(false);
   const [openDate, setOpenDate] = useState(false);
   const [openGuest, setOpenGuest] = useState(false);
+  const router = useRouter()
+  const pathname = usePathname(); 
+  const currentSearchParams = useSearchParams();
+
   const { selectionRange, totalNights, totalGuest,
     adults, childrens, infants, pets,
    } = useContext(GlobalContext);
-
+   
   const handleMainFilter = (type: any) => {
     if (type === "destinations") {
       setOpenDestination(!openDestination);
+      setOpenGuest(false);
+      setOpenDate(false);
     }
     if (type === "dates") {
       setOpenDate(!openDate);
       setOpenGuest(false);
+      setOpenDestination(false);
     }
     if (type === "guests") {
       setOpenGuest(!openGuest);
       setOpenDate(false);
+      setOpenDestination(false);
     }
   };
+
+  const filterHandler = () => {
+    const updatedSearchParams = new URLSearchParams(currentSearchParams.toString())
+    updatedSearchParams.set("guest", totalGuest)
+    router.push(pathname + "?" + updatedSearchParams.toString())
+  }
 
   return (
    <section className="px-2">
@@ -61,7 +77,7 @@ const MainFilter = () => {
           <p className="text-left cursor-pointer md:text-[13px] sm:hidden text-[10px]">{"Add guests"}</p>
         </div>
       </div>
-      <button className="bg-[#111] text-white p-3 rounded-full">
+      <button className="bg-[#111] text-white p-3 rounded-full" onClick={filterHandler}>
         <svg width="1.7em" height="1.7em" viewBox="0 0 24 24">
           <path
             fill="currentColor"
@@ -72,7 +88,8 @@ const MainFilter = () => {
         </svg>
       </button>
       {openDate && <DateRangeCalander className="left-0 top-[58px] w-full sm:!left-1/2 sm:-translate-x-1/2 sm:!w-[50%]"/>}
-      {openGuest && <Guest setOpenGuest={setOpenGuest} dbGest={10} className="!right-0 left-0 left-unset top-[58px] w-full sm:!w-[60%] md:!w-[45%]"/>}
+      {openGuest && <Guest setOpenGuest={setOpenGuest} dbGest={15} className="!right-0 left-0 left-unset top-[58px] w-full sm:!w-[60%] md:!w-[45%]"/>}
+      { openDestination && <Destination className="!right-0 left-0 absolute top-[58px] w-full sm:!w-[60%] md:!w-[65%]"/>}
     </div>
    </section>
   );

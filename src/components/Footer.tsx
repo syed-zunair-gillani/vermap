@@ -4,23 +4,9 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="bg-[#f7f7f7] pt-[48px] border-t-[1px] border-gray-300">
+    <section className="bg-[#f7f7f7] mt-10 border-t-[1px] border-gray-300">
       <Container>
-        <div className="grid md:grid-cols-3">
-          {footerNav?.map((item, idx) => (
-            <div key={idx}>
-              <h6>{item.title}</h6>
-              <ul className="mt-3">
-                {item?.links.map((link, id) => (
-                  <li key={id} className="font-light text-gray-500 py-1.5">
-                    <Link href={"/" + link.href}>{link.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="border-t-[1px] border-gray-200 flex gap-3 flex-col md:flex-row justify-center items-center md:justify-between py-7 mt-10">
+        <div className="flex gap-3 flex-col md:flex-row justify-center items-center md:justify-between py-7">
           <div className="flex flex-col md:flex-row items-center gap-6 text-sm font-light">
             <p>© 2024 vermap, Inc.</p>
             <ul className="flex items-center gap-3 md:gap-6 flex-wrap justify-center">
