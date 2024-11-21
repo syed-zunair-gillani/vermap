@@ -50,7 +50,10 @@ const MainFilter = () => {
         className="py-2 px-5 md:pl-10 font-normal flex-1 text-[13px] text-gray-500 bg-white rounded-full hover:bg-gray-100"
       >
         <p className="text-black text-left">Where</p>
-        <p className="text-left md:text-[13px] text-[10px]"><span className="hidden md:inline">Search</span> destinations</p>
+        <div className="text-left md:text-[13px] text-[10px]">
+          {/* <span className="hidden md:inline">Search</span> destinations */}
+          <input type="text" className="placeholder:text-[#737986] placeholder:font-semibold bg-transparent outline-none" placeholder="Search destinations"/>
+        </div>
       </button>
       <div className="pl-[1px] h-[30px] bg-gray-300" />
       <button
@@ -89,7 +92,6 @@ const MainFilter = () => {
       </button>
       {openDate && <DateRangeCalander className="left-0 top-[58px] w-full sm:!left-1/2 sm:-translate-x-1/2 sm:!w-[50%]"/>}
       {openGuest && <Guest setOpenGuest={setOpenGuest} dbGest={15} className="!right-0 left-0 left-unset top-[58px] w-full sm:!w-[60%] md:!w-[45%]"/>}
-      { openDestination && <Destination className="!right-0 left-0 absolute top-[58px] w-full sm:!w-[60%] md:!w-[65%]"/>}
     </div>
    </section>
   );
