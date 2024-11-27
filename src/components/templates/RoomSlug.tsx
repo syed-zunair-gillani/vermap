@@ -253,26 +253,3 @@ const RoomSlug = ({ data }: any) => {
 };
 
 export default RoomSlug;
-
-const featuresList = [
-  {
-    title: "Camp out under the stars",
-    info: "Curl up in my life-sized Action Park Tent for the night!",
-    icon: "/icons/star.svg",
-  },
-  {
-    title: "Play dress-up with my wardrobe",
-    info: "Suit up for adventure with my dresses, glamour jacket, scarves, and more!",
-    icon: "/icons/star.svg",
-  },
-  {
-    title: "Craft some bling for your BFFs",
-    info: "Unleash your creativity at my picnic table—aka Friendship Bracelet Station.",
-    icon: "/icons/star.svg",
-  },
-  {
-    title: "Raid my kitchen for your fav ‘90s goodies",
-    info: "It’ll be all that and a bag of chips! And lots of candy, too.",
-    icon: "/icons/star.svg",
-  },
-];

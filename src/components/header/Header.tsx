@@ -40,7 +40,7 @@ const Header = () => {
   },[])
 
   return (
-    <header className="border-b-[1px] sticky w-full top-0 z-[10000] bg-white">
+    <header className="border-b-[1px] sticky w-full top-0 z-[1000] bg-white">
       <Container className="py-1.5 hidden md:flex justify-between items-center">
         <Logo />
         <div className="flex-1 pt-1">

@@ -6,7 +6,7 @@ import React from "react";
 import GModelBox from "./ModelBox";
 
 const GalleryForDesktop = ({ data }: any) => {
-  const { seOpenGalleryModel } = React.useContext(GlobalContext);
+  const { setOpenGalleryModel } = React.useContext(GlobalContext);
   return (
     <>
       <section
@@ -51,7 +51,7 @@ const GalleryForDesktop = ({ data }: any) => {
         </div>
 
         <button
-          onClick={() => seOpenGalleryModel(true)}
+          onClick={() => setOpenGalleryModel(true)}
           className="absolute right-4 bottom-4 normal-case px-3 py-1.5 items-center rounded-lg !border !border-black bg-white text-black font-medium flex gap-1.5"
         >
           {Idots()} Show all photos

@@ -5,7 +5,7 @@ import { listingItems } from "../../public/data";
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-  const [openGalleryModel, seOpenGalleryModel] = useState(false)
+  const [openGalleryModel, setOpenGalleryModel] = useState(false)
   const [category, setCategory] = useState("")
   const [listing, setListing] = useState(listingItems)
 
@@ -41,7 +41,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        openGalleryModel, seOpenGalleryModel,
+        openGalleryModel, setOpenGalleryModel,
         category, setCategory,
         listing, setListing,
         selectionRange, handleSelect,

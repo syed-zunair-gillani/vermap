@@ -5,7 +5,6 @@ import React from "react";
 import Slider from "react-slick";
 
 const ItemCard = ({ data }: any) => {
-  console.log("🚀 ~ ItemCard ~ data: 11", data?.acf?.room_types)
   const slider = React.useRef<any>(null);
 
   return (
