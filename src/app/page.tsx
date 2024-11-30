@@ -1,14 +1,25 @@
 import Landing from "@/components/templates/Landing";
+import { filterData } from "@/utils";
+import { client } from "@/utils/client";
 import { fetchApiInstance } from "@/utils/fetchApiInstance";
+import { QFHotel } from "@/utils/query";
 
 async function getData(type: any) {
-  switch (type) {
+  const {category, destination, start_date, end_date, guest } = type
+  switch (category) {
     case "hotels":
       // Fetch data for hotels
-      return await fetchApiInstance({
+      const data = await fetchApiInstance({
         endpoint: "hotel",
       });
 
+      if(guest || destination){
+        return filterData(data, type);
+        
+      }
+
+      return data
+      
     case "flight":
       // Fetch data for flights
       return await fetchApiInstance({
@@ -34,7 +45,7 @@ async function getData(type: any) {
   }
 }
 
-export default async function Home({ searchParams }: any) {
-  const data = await getData(searchParams?.category);
+export default async function Home(props: any) {
+  const data = await getData(props?.searchParams);
   return <Landing data={data} />;
 }

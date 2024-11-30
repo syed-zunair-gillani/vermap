@@ -4,20 +4,21 @@ import DateRangeCalander from "../filters/date-range";
 import Guest from "../filters/guest";
 import { GlobalContext } from "@/context/global-context";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Destination from "../filters/destination";
+import { formatDate } from "@/utils";
 
 const MainFilter = () => {
   const [openDestination, setOpenDestination] = useState(false);
   const [openDate, setOpenDate] = useState(false);
   const [openGuest, setOpenGuest] = useState(false);
+  const [destinationLoacation, setDestinationLocation] = useState('')
   const router = useRouter()
   const pathname = usePathname(); 
   const currentSearchParams = useSearchParams();
 
   const { selectionRange, totalNights, totalGuest,
-    adults, childrens, infants, pets,
+    adults, childrens, infants, pets, listing, setListing
    } = useContext(GlobalContext);
-   
+      
   const handleMainFilter = (type: any) => {
     if (type === "destinations") {
       setOpenDestination(!openDestination);
@@ -36,10 +37,27 @@ const MainFilter = () => {
     }
   };
 
+
   const filterHandler = () => {
     const updatedSearchParams = new URLSearchParams(currentSearchParams.toString())
-    updatedSearchParams.set("guest", totalGuest)
+    
+    if(totalGuest > 0){
+      updatedSearchParams.set("guest", totalGuest)
+    }else{
+      updatedSearchParams.delete("guest")
+    }
+    
+    updatedSearchParams.set("destination", destinationLoacation)
+    // updatedSearchParams.set("start_date", formatDate(selectionRange.startDate))
+    // updatedSearchParams.set("end_date", formatDate(selectionRange.endDate))
+    totalGuest !== 0 && updatedSearchParams.set("guest", totalGuest)
     router.push(pathname + "?" + updatedSearchParams.toString())
+
+    // // reset 
+    // !destinationLoacation && updatedSearchParams?.delete("destination")
+    // !selectionRange.startDate && updatedSearchParams.delete("start_date")
+    // !selectionRange.endDate && updatedSearchParams.delete("end_date")
+    // totalGuest === 0 && updatedSearchParams.delete("guest")
   }
 
   return (
@@ -52,7 +70,7 @@ const MainFilter = () => {
         <p className="text-black text-left">Where</p>
         <div className="text-left md:text-[13px] text-[10px]">
           {/* <span className="hidden md:inline">Search</span> destinations */}
-          <input type="text" className="placeholder:text-[#737986] placeholder:font-semibold bg-transparent outline-none" placeholder="Search destinations"/>
+          <input type="text" value={destinationLoacation} onChange={(e)=>setDestinationLocation(e.target.value)} className="placeholder:text-[#737986] placeholder:font-semibold bg-transparent outline-none" placeholder="Search destinations"/>
         </div>
       </button>
       <div className="pl-[1px] h-[30px] bg-gray-300" />

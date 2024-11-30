@@ -1,13 +1,12 @@
 "use client";
 import React, { createContext, useEffect, useState } from "react";
-import { listingItems } from "../../public/data";
 
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [openGalleryModel, setOpenGalleryModel] = useState(false)
   const [category, setCategory] = useState("")
-  const [listing, setListing] = useState(listingItems)
+  const [listing, setListing] = useState()
 
    // Guest Meta 
    const [adults, setAdults] = useState(0);
@@ -15,7 +14,6 @@ export const GlobalProvider = ({ children }) => {
    const [infants, setInfants] = useState(0);
    const [pets, setPets] = useState(0);
    const totalGuest = adults + childrens + infants + pets;
-
 
   // Calander 
   const [selectionRange, setSelectionRange] = useState({
@@ -35,6 +33,8 @@ export const GlobalProvider = ({ children }) => {
     const totalNights = Math.floor(diffInTime / oneDay); // Convert to nights (days)
     return totalNights > 0 ? totalNights : 0; // Ensure nights is not negative
   };
+
+
 
   
 
